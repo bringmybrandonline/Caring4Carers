@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Booking {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  datePreference  String
+  requirements    String?
+  status          String   @default("pending") // pending, confirmed, paid, cancelled
+  paymentStatus   String   @default("unpaid") // unpaid, paid, refunded
+  stripeSessionId String?
+  amount          Float?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("bookings")
+}
+
+model RetreatDate {
+  id              String   @id @default(cuid())
+  date            DateTime
+  maxParticipants Int      @default(12)
+  currentBookings Int      @default(0)
+  price           Float    @default(85.0)
+  location        String
+  status          String   @default("active") // active, cancelled, full
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("retreat_dates")
+}
