@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
@@ -21,9 +22,18 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
       </head>
-      <body>{children}</body>
+      <body className="bg-gray-50">
+        <main className="min-h-screen">{children}</main>
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
+      </body>
     </html>
   );
 }

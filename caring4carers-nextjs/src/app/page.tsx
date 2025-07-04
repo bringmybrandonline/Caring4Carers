@@ -12,6 +12,9 @@ export default function Home() {
   const [giftCardCode, setGiftCardCode] = useState("");
   const [giftCardError, setGiftCardError] = useState("");
   const [isValidatingGiftCard, setIsValidatingGiftCard] = useState(false);
+  const [giftCardAmount, setGiftCardAmount] = useState<number | null>(null);
+  const [remainingBalance, setRemainingBalance] = useState<number | null>(null);
+  const RETREAT_PRICE = 85.0;
 
   useEffect(() => {
     // Smooth scrolling for navigation links
@@ -82,11 +85,28 @@ export default function Home() {
     };
   }, []);
 
+  // Auto-validate gift card when code is entered
+  useEffect(() => {
+    const validateTimer = setTimeout(() => {
+      if (
+        giftCardCode &&
+        giftCardCode.length >= 8 &&
+        paymentMethod === "giftcard"
+      ) {
+        validateGiftCard(giftCardCode);
+      }
+    }, 500);
+
+    return () => clearTimeout(validateTimer);
+  }, [giftCardCode, paymentMethod]);
+
   const validateGiftCard = async (code: string) => {
     if (!code) return;
 
     setIsValidatingGiftCard(true);
     setGiftCardError("");
+    setGiftCardAmount(null);
+    setRemainingBalance(null);
 
     try {
       const response = await fetch(
@@ -98,6 +118,11 @@ export default function Home() {
         setGiftCardError(data.error || "Failed to validate gift card");
         return false;
       }
+
+      // Update gift card amount and calculate remaining balance
+      setGiftCardAmount(data.amount);
+      const remaining = Math.max(0, RETREAT_PRICE - data.amount);
+      setRemainingBalance(remaining);
 
       return true;
     } catch (error) {
@@ -607,11 +632,38 @@ export default function Home() {
                           type="text"
                           id="gift-card-code"
                           value={giftCardCode}
-                          onChange={(e) => setGiftCardCode(e.target.value)}
+                          onChange={(e) => {
+                            setGiftCardCode(e.target.value);
+                            setGiftCardAmount(null);
+                            setRemainingBalance(null);
+                          }}
                           required
                         />
                         {giftCardError && (
                           <div className="error-message">{giftCardError}</div>
+                        )}
+                        {giftCardAmount !== null && (
+                          <div className="mt-4 space-y-2 text-sm">
+                            <div className="flex justify-between items-center text-gray-700">
+                              <span>Retreat Price:</span>
+                              <span>€{RETREAT_PRICE.toFixed(2)}</span>
+                            </div>
+                            <div className="flex justify-between items-center text-green-600">
+                              <span>Gift Card Amount:</span>
+                              <span>€{giftCardAmount.toFixed(2)}</span>
+                            </div>
+                            {remainingBalance! > 0 && (
+                              <div className="flex justify-between items-center text-indigo-600 font-semibold border-t pt-2">
+                                <span>Remaining to Pay:</span>
+                                <span>€{remainingBalance!.toFixed(2)}</span>
+                              </div>
+                            )}
+                            {remainingBalance === 0 && (
+                              <div className="text-green-600 font-semibold mt-2">
+                                Your gift card covers the full amount!
+                              </div>
+                            )}
+                          </div>
                         )}
                       </div>
                     )}
@@ -632,8 +684,16 @@ export default function Home() {
                       {isSubmitting || isValidatingGiftCard
                         ? "Processing..."
                         : paymentMethod === "card"
-                        ? "Book Now - Secure Payment via Stripe"
-                        : "Book Now - Pay with Gift Card"}
+                        ? `Book Now - Pay €${RETREAT_PRICE.toFixed(
+                            2
+                          )} via Stripe`
+                        : giftCardAmount === null
+                        ? "Book Now - Enter Gift Card Code"
+                        : remainingBalance! > 0
+                        ? `Book Now - Pay Remaining €${remainingBalance!.toFixed(
+                            2
+                          )}`
+                        : "Book Now - Gift Card Payment"}
                     </button>
                   </form>
 

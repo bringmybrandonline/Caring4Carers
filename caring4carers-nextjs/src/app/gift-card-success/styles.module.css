@@ -1,0 +1,131 @@
+.giftCardSuccess {
+  @apply min-h-screen bg-gradient-to-b from-indigo-50 to-white py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.container {
+  @apply max-w-3xl mx-auto;
+}
+
+.header {
+  @apply text-center mb-8;
+}
+
+.successIcon {
+  @apply inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4;
+}
+
+.successIcon i {
+  @apply text-2xl text-green-600;
+}
+
+.title {
+  @apply text-3xl font-bold text-gray-900 mb-2;
+}
+
+.subtitle {
+  @apply text-lg text-gray-600;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-xl overflow-hidden;
+}
+
+.cardHeader {
+  @apply relative h-48;
+}
+
+.cardImage {
+  @apply object-cover;
+}
+
+.cardOverlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/50 to-transparent;
+}
+
+.cardHeaderContent {
+  @apply absolute bottom-4 left-6 text-white;
+}
+
+.cardTitle {
+  @apply text-2xl font-semibold;
+}
+
+.cardSubtitle {
+  @apply text-lg opacity-90;
+}
+
+.cardBody {
+  @apply p-8;
+}
+
+.codeSection {
+  @apply mb-8;
+}
+
+.codeLabel {
+  @apply text-sm font-medium text-gray-500 mb-2;
+}
+
+.codeContainer {
+  @apply flex items-center justify-between bg-gray-50 rounded-lg p-4;
+}
+
+.code {
+  @apply text-2xl font-mono font-bold text-indigo-600 tracking-wider;
+}
+
+.amountSection {
+  @apply mb-8;
+}
+
+.amountLabel {
+  @apply text-sm font-medium text-gray-500 mb-2;
+}
+
+.amount {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.instructionsSection {
+  @apply border-t border-gray-200 pt-6;
+}
+
+.instructionsTitle {
+  @apply text-lg font-semibold text-gray-900 mb-4;
+}
+
+.instructionsList {
+  @apply space-y-4;
+}
+
+.instructionItem {
+  @apply flex items-start;
+}
+
+.instructionNumber {
+  @apply flex-shrink-0 h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600;
+}
+
+.instructionText {
+  @apply ml-3 text-gray-600;
+}
+
+.actions {
+  @apply mt-8 flex flex-col sm:flex-row gap-4;
+}
+
+.primaryButton {
+  @apply flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
+
+.secondaryButton {
+  @apply flex-1 inline-flex justify-center items-center px-6 py-3 border border-gray-300 rounded-lg shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
+
+.footer {
+  @apply mt-8 text-center text-sm text-gray-500;
+}
+
+.footerLink {
+  @apply text-indigo-600 hover:text-indigo-500;
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
@@ -25,6 +27,7 @@ export default async function GiftCardSuccessPage({
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        {/* Success Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
             <i className="fas fa-check text-2xl text-green-600"></i>
@@ -38,13 +41,17 @@ export default async function GiftCardSuccessPage({
           </p>
         </div>
 
+        {/* Gift Card Display */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="relative h-48">
+          {/* Card Header with Image */}
+          <div className="relative w-full h-48">
             <Image
               src="/images/hero-retreat-setting.jpg"
               alt="Wellness retreat setting"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             <div className="absolute bottom-4 left-6 text-white">
@@ -57,7 +64,9 @@ export default async function GiftCardSuccessPage({
             </div>
           </div>
 
+          {/* Card Content */}
           <div className="p-8">
+            {/* Gift Card Code */}
             <div className="mb-8">
               <div className="text-sm font-medium text-gray-500 mb-2">
                 Gift Card Code
@@ -70,6 +79,7 @@ export default async function GiftCardSuccessPage({
               </div>
             </div>
 
+            {/* Amount */}
             <div className="mb-8">
               <div className="text-sm font-medium text-gray-500 mb-2">
                 Amount
@@ -79,6 +89,7 @@ export default async function GiftCardSuccessPage({
               </div>
             </div>
 
+            {/* Instructions */}
             <div className="border-t border-gray-200 pt-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 How to Use Your Gift Card
@@ -112,6 +123,7 @@ export default async function GiftCardSuccessPage({
               </div>
             </div>
 
+            {/* Action Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <a
                 href="/#booking"
@@ -131,6 +143,7 @@ export default async function GiftCardSuccessPage({
           </div>
         </div>
 
+        {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>
             Questions about your gift card? Email us at{" "}
