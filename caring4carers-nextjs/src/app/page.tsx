@@ -6,6 +6,12 @@ import Image from "next/image";
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "giftcard">(
+    "card"
+  );
+  const [giftCardCode, setGiftCardCode] = useState("");
+  const [giftCardError, setGiftCardError] = useState("");
+  const [isValidatingGiftCard, setIsValidatingGiftCard] = useState(false);
 
   useEffect(() => {
     // Smooth scrolling for navigation links
@@ -76,9 +82,44 @@ export default function Home() {
     };
   }, []);
 
+  const validateGiftCard = async (code: string) => {
+    if (!code) return;
+
+    setIsValidatingGiftCard(true);
+    setGiftCardError("");
+
+    try {
+      const response = await fetch(
+        `/api/stripe/gift-cards?code=${encodeURIComponent(code)}`
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        setGiftCardError(data.error || "Failed to validate gift card");
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      setGiftCardError("Failed to validate gift card");
+      return false;
+    } finally {
+      setIsValidatingGiftCard(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate gift card if using one
+    if (paymentMethod === "giftcard") {
+      const isValid = await validateGiftCard(giftCardCode);
+      if (!isValid) {
+        setIsSubmitting(false);
+        return;
+      }
+    }
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -87,6 +128,8 @@ export default function Home() {
       phone: formData.get("phone"),
       datePreference: formData.get("date-preference"),
       requirements: formData.get("requirements"),
+      paymentMethod,
+      giftCardCode: paymentMethod === "giftcard" ? giftCardCode : undefined,
     };
 
     try {
@@ -107,12 +150,14 @@ export default function Home() {
         } else {
           // Show success message for booking without immediate payment
           alert(
-            "Thank you! We'll contact you soon with payment details and to confirm your booking."
+            result.message || "Thank you! Your booking has been confirmed."
           );
           e.currentTarget.reset();
+          setGiftCardCode("");
         }
       } else {
-        alert("Something went wrong. Please try again.");
+        const error = await response.json();
+        alert(error.error || "Something went wrong. Please try again.");
       }
     } catch (error) {
       alert("Something went wrong. Please try again.");
@@ -138,6 +183,11 @@ export default function Home() {
             </li>
             <li>
               <a href="#experience">What to Expect</a>
+            </li>
+            <li>
+              <a href="/gift-cards" className="nav-link">
+                Gift Cards
+              </a>
             </li>
             <li>
               <a href="#booking" className="nav-cta">
@@ -525,19 +575,65 @@ export default function Home() {
                         placeholder="Dietary requirements, mobility considerations, etc."
                       ></textarea>
                     </div>
+                    <div className="form-group">
+                      <label>Payment Method</label>
+                      <div className="payment-options">
+                        <label className="radio-label">
+                          <input
+                            type="radio"
+                            name="payment-method"
+                            value="card"
+                            checked={paymentMethod === "card"}
+                            onChange={(e) => setPaymentMethod("card")}
+                          />
+                          <span>Pay by Card</span>
+                        </label>
+                        <label className="radio-label">
+                          <input
+                            type="radio"
+                            name="payment-method"
+                            value="giftcard"
+                            checked={paymentMethod === "giftcard"}
+                            onChange={(e) => setPaymentMethod("giftcard")}
+                          />
+                          <span>Use Gift Card</span>
+                        </label>
+                      </div>
+                    </div>
+                    {paymentMethod === "giftcard" && (
+                      <div className="form-group">
+                        <label htmlFor="gift-card-code">Gift Card Code</label>
+                        <input
+                          type="text"
+                          id="gift-card-code"
+                          value={giftCardCode}
+                          onChange={(e) => setGiftCardCode(e.target.value)}
+                          required
+                        />
+                        {giftCardError && (
+                          <div className="error-message">{giftCardError}</div>
+                        )}
+                      </div>
+                    )}
                     <button
                       type="submit"
                       className="cta-button primary full-width"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || isValidatingGiftCard}
                     >
                       <i
                         className={`fas ${
-                          isSubmitting ? "fa-spinner fa-spin" : "fa-credit-card"
+                          isSubmitting || isValidatingGiftCard
+                            ? "fa-spinner fa-spin"
+                            : paymentMethod === "card"
+                            ? "fa-credit-card"
+                            : "fa-gift"
                         }`}
                       ></i>
-                      {isSubmitting
+                      {isSubmitting || isValidatingGiftCard
                         ? "Processing..."
-                        : "Book Now - Secure Payment via Stripe"}
+                        : paymentMethod === "card"
+                        ? "Book Now - Secure Payment via Stripe"
+                        : "Book Now - Pay with Gift Card"}
                     </button>
                   </form>
 

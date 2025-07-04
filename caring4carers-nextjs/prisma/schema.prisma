@@ -44,3 +44,18 @@ model RetreatDate {
 
   @@map("retreat_dates")
 }
+
+model GiftCard {
+  id              String   @id @default(cuid())
+  code            String   @unique
+  amount          Float
+  status          String   @default("active") // active, redeemed, expired
+  stripeSessionId String?
+  purchaserEmail  String
+  redeemedBy      String?
+  redeemedAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("gift_cards")
+}

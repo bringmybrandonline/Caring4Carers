@@ -9,6 +9,8 @@ const bookingSchema = z.object({
   phone: z.string().min(10, "Phone number must be at least 10 characters"),
   datePreference: z.string().min(1, "Please select a date preference"),
   requirements: z.string().optional().default(""),
+  paymentMethod: z.enum(["card", "giftcard"]),
+  giftCardCode: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -18,6 +20,40 @@ export async function POST(request: NextRequest) {
     // Validate the request data
     const validatedData = bookingSchema.parse(body);
 
+    let finalAmount = 85.0; // Default price
+    let giftCard = null;
+
+    // If using gift card, validate and apply it
+    if (validatedData.paymentMethod === "giftcard") {
+      if (!validatedData.giftCardCode) {
+        return NextResponse.json(
+          { error: "Gift card code is required" },
+          { status: 400 }
+        );
+      }
+
+      giftCard = await prisma.giftCard.findUnique({
+        where: { code: validatedData.giftCardCode },
+      });
+
+      if (!giftCard) {
+        return NextResponse.json(
+          { error: "Invalid gift card code" },
+          { status: 400 }
+        );
+      }
+
+      if (giftCard.status !== "active") {
+        return NextResponse.json(
+          { error: "Gift card has already been redeemed or is expired" },
+          { status: 400 }
+        );
+      }
+
+      // Apply gift card amount
+      finalAmount = Math.max(0, finalAmount - giftCard.amount);
+    }
+
     // Save booking to database
     const booking = await prisma.booking.create({
       data: {
@@ -26,11 +62,42 @@ export async function POST(request: NextRequest) {
         phone: validatedData.phone,
         datePreference: validatedData.datePreference,
         requirements: validatedData.requirements,
-        amount: 85.0, // Default price
+        amount: finalAmount,
       },
     });
 
-    // Create Stripe checkout session
+    // If using gift card and it covers the full amount
+    if (validatedData.paymentMethod === "giftcard" && finalAmount === 0) {
+      // Mark the gift card as redeemed
+      await prisma.giftCard.update({
+        where: { id: giftCard!.id },
+        data: {
+          status: "redeemed",
+          redeemedBy: validatedData.email,
+          redeemedAt: new Date(),
+        },
+      });
+
+      // Update booking status
+      await prisma.booking.update({
+        where: { id: booking.id },
+        data: {
+          status: "confirmed",
+          paymentStatus: "paid",
+        },
+      });
+
+      return NextResponse.json(
+        {
+          message: "Booking confirmed with gift card!",
+          bookingId: booking.id,
+          redirectToPayment: false,
+        },
+        { status: 200 }
+      );
+    }
+
+    // If there's still an amount to pay, create Stripe checkout session
     try {
       // Get the base URL from the request
       const protocol = request.headers.get("x-forwarded-proto") || "http";
@@ -47,6 +114,19 @@ export async function POST(request: NextRequest) {
 
       if (stripeResponse.ok) {
         const stripeData = await stripeResponse.json();
+
+        // If using gift card, mark it as redeemed
+        if (validatedData.paymentMethod === "giftcard") {
+          await prisma.giftCard.update({
+            where: { id: giftCard!.id },
+            data: {
+              status: "redeemed",
+              redeemedBy: validatedData.email,
+              redeemedAt: new Date(),
+            },
+          });
+        }
+
         return NextResponse.json(
           {
             message: "Booking created successfully",
