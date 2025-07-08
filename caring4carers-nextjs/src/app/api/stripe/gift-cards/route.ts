@@ -150,9 +150,12 @@ export async function POST(request: NextRequest) {
 
 // Endpoint to validate a gift card code
 export async function GET(request: NextRequest) {
+  console.log("Received gift card validation request");
+
   try {
     const { searchParams } = new URL(request.url);
     const code = searchParams.get("code");
+    console.log("Gift card code to validate:", code);
 
     if (!code) {
       return NextResponse.json(
@@ -161,9 +164,11 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    console.log("Searching for gift card in database");
     const giftCard = await prisma.giftCard.findUnique({
       where: { code: code },
     });
+    console.log("Gift card found:", giftCard);
 
     if (!giftCard) {
       return NextResponse.json(
@@ -172,7 +177,39 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    if (!giftCard.stripeSessionId) {
+      return NextResponse.json(
+        { error: "Gift card payment not completed" },
+        { status: 400 }
+      );
+    }
+
+    // Verify payment status with Stripe
+    if (isStripeConfigured && stripe) {
+      console.log("Verifying Stripe payment status");
+      try {
+        const session = await stripe.checkout.sessions.retrieve(
+          giftCard.stripeSessionId
+        );
+        console.log("Stripe session status:", session.payment_status);
+
+        if (session.payment_status !== "paid") {
+          return NextResponse.json(
+            { error: "Gift card payment is pending" },
+            { status: 400 }
+          );
+        }
+      } catch (stripeError) {
+        console.error("Error verifying Stripe payment:", stripeError);
+        return NextResponse.json(
+          { error: "Could not verify gift card payment status" },
+          { status: 500 }
+        );
+      }
+    }
+
     if (giftCard.status !== "active") {
+      console.log("Gift card status:", giftCard.status);
       return NextResponse.json(
         { error: "Gift card has already been redeemed or is expired" },
         { status: 400 }
@@ -182,11 +219,28 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       valid: true,
       amount: giftCard.amount,
+      code: giftCard.code,
+      status: giftCard.status,
     });
   } catch (error) {
     console.error("Gift card validation error:", error);
+
+    if (error instanceof Stripe.errors.StripeError) {
+      return NextResponse.json(
+        {
+          error: "Payment verification error",
+          message: error.message,
+          code: error.code,
+        },
+        { status: error.statusCode || 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "Failed to validate gift card" },
+      {
+        error: "Failed to validate gift card",
+        message: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 }
     );
   }

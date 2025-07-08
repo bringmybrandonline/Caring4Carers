@@ -17,6 +17,8 @@ export default function GiftCardPage() {
     setIsLoading(true);
 
     try {
+      console.log("Submitting gift card purchase:", { amount, email });
+
       const response = await fetch("/api/stripe/gift-cards", {
         method: "POST",
         headers: {
@@ -25,18 +27,42 @@ export default function GiftCardPage() {
         body: JSON.stringify({ amount, email }),
       });
 
-      const data = await response.json();
+      console.log("Response status:", response.status);
 
+      // Check if the response is ok before trying to parse JSON
       if (!response.ok) {
-        throw new Error(data.error || "Failed to purchase gift card");
+        const errorText = await response.text();
+        console.error("API error response:", errorText);
+        try {
+          // Try to parse the error as JSON
+          const errorData = JSON.parse(errorText);
+          throw new Error(
+            errorData.error ||
+              errorData.message ||
+              "Failed to purchase gift card"
+          );
+        } catch (parseError) {
+          // If parsing fails, use the raw error text
+          throw new Error(errorText || "Failed to purchase gift card");
+        }
       }
+
+      const data = await response.json();
+      console.log("Response data:", data);
 
       // Redirect to Stripe Checkout
       if (data.url) {
         window.location.href = data.url;
+      } else {
+        throw new Error("No payment URL received");
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      console.error("Gift card purchase error:", err);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong with the purchase. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }

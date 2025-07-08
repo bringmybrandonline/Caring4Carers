@@ -109,15 +109,27 @@ export default function Home() {
     setRemainingBalance(null);
 
     try {
+      console.log("Validating gift card:", code);
       const response = await fetch(
         `/api/stripe/gift-cards?code=${encodeURIComponent(code)}`
       );
-      const data = await response.json();
+
+      console.log("Gift card validation response status:", response.status);
 
       if (!response.ok) {
-        setGiftCardError(data.error || "Failed to validate gift card");
+        const errorText = await response.text();
+        console.error("Gift card validation error response:", errorText);
+        try {
+          const errorData = JSON.parse(errorText);
+          setGiftCardError(errorData.error || "Failed to validate gift card");
+        } catch (parseError) {
+          setGiftCardError(errorText || "Failed to validate gift card");
+        }
         return false;
       }
+
+      const data = await response.json();
+      console.log("Gift card validation response:", data);
 
       // Update gift card amount and calculate remaining balance
       setGiftCardAmount(data.amount);
@@ -126,6 +138,7 @@ export default function Home() {
 
       return true;
     } catch (error) {
+      console.error("Gift card validation error:", error);
       setGiftCardError("Failed to validate gift card");
       return false;
     } finally {
@@ -137,27 +150,30 @@ export default function Home() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Validate gift card if using one
-    if (paymentMethod === "giftcard") {
-      const isValid = await validateGiftCard(giftCardCode);
-      if (!isValid) {
-        setIsSubmitting(false);
-        return;
-      }
-    }
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      datePreference: formData.get("date-preference"),
-      requirements: formData.get("requirements"),
-      paymentMethod,
-      giftCardCode: paymentMethod === "giftcard" ? giftCardCode : undefined,
-    };
-
     try {
+      // Validate gift card if using one
+      if (paymentMethod === "giftcard") {
+        console.log("Validating gift card before submission");
+        const isValid = await validateGiftCard(giftCardCode);
+        if (!isValid) {
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        datePreference: formData.get("date-preference"),
+        requirements: formData.get("requirements"),
+        paymentMethod,
+        giftCardCode: paymentMethod === "giftcard" ? giftCardCode : undefined,
+      };
+
+      console.log("Submitting booking:", data);
+
       const response = await fetch("/api/bookings", {
         method: "POST",
         headers: {
@@ -166,9 +182,23 @@ export default function Home() {
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        const result = await response.json();
+      console.log("Booking response status:", response.status);
 
+      // Get the response text first
+      const responseText = await response.text();
+      console.log("Booking response text:", responseText);
+
+      let result;
+      try {
+        // Try to parse the response as JSON
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("Failed to parse response as JSON:", parseError);
+        throw new Error("Invalid response from server");
+      }
+
+      if (response.ok) {
+        console.log("Booking successful:", result);
         if (result.redirectToPayment && result.paymentUrl) {
           // Redirect to Stripe Checkout
           window.location.href = result.paymentUrl;
@@ -181,11 +211,12 @@ export default function Home() {
           setGiftCardCode("");
         }
       } else {
-        const error = await response.json();
-        alert(error.error || "Something went wrong. Please try again.");
+        console.error("Booking error:", result);
+        alert(result.error || "Something went wrong. Please try again.");
       }
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      console.error("Booking submission error:", error);
+      alert("Something went wrong with the booking. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
