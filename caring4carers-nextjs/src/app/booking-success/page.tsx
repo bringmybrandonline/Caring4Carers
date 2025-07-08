@@ -12,8 +12,8 @@ export default function BookingSuccess() {
 
   useEffect(() => {
     if (sessionId) {
-      // Fetch booking details from API
-      fetch(`/api/booking/${sessionId}`)
+      // Fetch booking details from Netlify Function
+      fetch(`/.netlify/functions/get-booking?sessionId=${sessionId}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.error) {

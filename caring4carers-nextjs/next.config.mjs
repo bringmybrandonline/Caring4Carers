@@ -17,10 +17,8 @@ const nextConfig = {
   // Netlify specific configuration
   output: "export",
   distDir: "out",
-  // Allow client-side only pages
-  experimental: {
-    missingSuspenseWithCSRError: false,
-  },
+  // Disable server API routes for static export
+  rewrites: () => [],
 };
 
 export default nextConfig;
