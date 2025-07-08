@@ -1,27 +1,48 @@
 "use client";
 
-import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import Image from "next/image";
 import CopyButton from "./CopyButton";
 
-export default async function GiftCardSuccessPage({
-  searchParams,
-}: {
-  searchParams: { code: string };
-}) {
-  const code = searchParams?.code;
+function GiftCardSuccessContent() {
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
+  const [loading, setLoading] = useState(true);
+  const [giftCard, setGiftCard] = useState<any>(null);
 
-  if (!code) {
-    redirect("/");
+  useEffect(() => {
+    if (!code) {
+      window.location.href = "/";
+      return;
+    }
+
+    // Fetch gift card details from Netlify Function
+    fetch(`/.netlify/functions/get-gift-card?code=${code}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        setGiftCard(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        window.location.href = "/";
+      });
+  }, [code]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500"></div>
+      </div>
+    );
   }
 
-  const giftCard = await prisma.giftCard.findUnique({
-    where: { code },
-  });
-
   if (!giftCard) {
-    redirect("/");
+    return null;
   }
 
   return (
@@ -157,5 +178,19 @@ export default async function GiftCardSuccessPage({
         </div>
       </div>
     </div>
+  );
+}
+
+export default function GiftCardSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500"></div>
+        </div>
+      }
+    >
+      <GiftCardSuccessContent />
+    </Suspense>
   );
 }

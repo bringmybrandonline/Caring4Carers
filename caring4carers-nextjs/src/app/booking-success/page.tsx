@@ -1,10 +1,11 @@
 "use client";
 
+import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
 
-export default function BookingSuccess() {
+function BookingSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const [loading, setLoading] = useState(true);
@@ -160,5 +161,19 @@ export default function BookingSuccess() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingSuccess() {
+  return (
+    <Suspense
+      fallback={
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+      }
+    >
+      <BookingSuccessContent />
+    </Suspense>
   );
 }

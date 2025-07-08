@@ -17,8 +17,6 @@ const nextConfig = {
   // Netlify specific configuration
   output: "export",
   distDir: "out",
-  // Disable server API routes for static export
-  rewrites: () => [],
 };
 
 export default nextConfig;
