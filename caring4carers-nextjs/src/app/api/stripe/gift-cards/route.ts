@@ -31,8 +31,11 @@ function generateGiftCardCode(): string {
 
 export async function POST(request: NextRequest) {
   try {
+    console.log("Starting gift card purchase process");
+
     // Check if Stripe is configured
     if (!isStripeConfigured || !stripe) {
+      console.error("Stripe not configured properly");
       return NextResponse.json(
         {
           error: "Stripe not configured",
@@ -44,66 +47,90 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+    console.log("Received request body:", body);
+
     const validatedData = giftCardSchema.parse(body);
+    console.log("Validated data:", validatedData);
 
     // Generate a unique gift card code
     const giftCardCode = generateGiftCardCode();
+    console.log("Generated gift card code:", giftCardCode);
 
-    // Create gift card record in database
-    const giftCard = await prisma.giftCard.create({
-      data: {
-        code: giftCardCode,
-        amount: validatedData.amount,
-        purchaserEmail: validatedData.email,
-      },
-    });
-
-    // Get the base URL from the request
-    const protocol = request.headers.get("x-forwarded-proto") || "http";
-    const host = request.headers.get("host");
-    const baseUrl = `${protocol}://${host}`;
-
-    // Create Stripe Checkout Session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: "Caring4Carers Gift Card",
-              description: `Gift Card worth €${validatedData.amount}`,
-              images: [
-                "https://via.placeholder.com/400x300/2b6cb0/ffffff?text=Caring4Carers+Gift+Card",
-              ],
-            },
-            unit_amount: Math.round(validatedData.amount * 100), // Convert to cents
-          },
-          quantity: 1,
+    try {
+      // Create gift card record in database
+      const giftCard = await prisma.giftCard.create({
+        data: {
+          code: giftCardCode,
+          amount: validatedData.amount,
+          purchaserEmail: validatedData.email,
         },
-      ],
-      mode: "payment",
-      success_url: `${baseUrl}/gift-card-success?code=${giftCardCode}`,
-      cancel_url: `${baseUrl}`,
-      metadata: {
-        giftCardId: giftCard.id,
-        giftCardCode: giftCardCode,
-        purchaserEmail: validatedData.email,
-      },
-      customer_email: validatedData.email,
-    });
+      });
+      console.log("Created gift card in database:", giftCard);
 
-    // Update gift card with Stripe session ID
-    await prisma.giftCard.update({
-      where: { id: giftCard.id },
-      data: { stripeSessionId: session.id },
-    });
+      // Get the base URL from the request
+      const protocol = request.headers.get("x-forwarded-proto") || "http";
+      const host = request.headers.get("host");
+      const baseUrl = `${protocol}://${host}`;
+      console.log("Base URL:", baseUrl);
 
-    return NextResponse.json({
-      sessionId: session.id,
-      url: session.url,
-    });
+      try {
+        // Create Stripe Checkout Session
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          line_items: [
+            {
+              price_data: {
+                currency: "eur",
+                product_data: {
+                  name: "Caring4Carers Gift Card",
+                  description: `Gift Card worth €${validatedData.amount}`,
+                  images: [
+                    "https://via.placeholder.com/400x300/2b6cb0/ffffff?text=Caring4Carers+Gift+Card",
+                  ],
+                },
+                unit_amount: Math.round(validatedData.amount * 100), // Convert to cents
+              },
+              quantity: 1,
+            },
+          ],
+          mode: "payment",
+          success_url: `${baseUrl}/gift-card-success?code=${giftCardCode}`,
+          cancel_url: `${baseUrl}`,
+          metadata: {
+            giftCardId: giftCard.id,
+            giftCardCode: giftCardCode,
+            purchaserEmail: validatedData.email,
+          },
+          customer_email: validatedData.email,
+        });
+        console.log("Created Stripe session:", session.id);
+
+        // Update gift card with Stripe session ID
+        await prisma.giftCard.update({
+          where: { id: giftCard.id },
+          data: { stripeSessionId: session.id },
+        });
+        console.log("Updated gift card with session ID");
+
+        return NextResponse.json({
+          sessionId: session.id,
+          url: session.url,
+        });
+      } catch (stripeError) {
+        console.error("Stripe session creation error:", stripeError);
+        // Clean up the gift card if Stripe session creation fails
+        await prisma.giftCard.delete({
+          where: { id: giftCard.id },
+        });
+        throw stripeError;
+      }
+    } catch (dbError) {
+      console.error("Database operation error:", dbError);
+      throw dbError;
+    }
   } catch (error) {
+    console.error("Gift card purchase error:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Validation failed", details: error.errors },
@@ -111,9 +138,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error("Gift card purchase error:", error);
     return NextResponse.json(
-      { error: "Failed to create gift card purchase session" },
+      {
+        error: "Failed to create gift card purchase session",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 }
     );
   }
