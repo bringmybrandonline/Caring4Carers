@@ -12,20 +12,41 @@ export default function BookingSuccess() {
 
   useEffect(() => {
     if (sessionId) {
-      setTimeout(() => {
-        setLoading(false);
-        setBookingDetails({
-          sessionId,
-          amount: 85,
-          currency: "EUR",
-          date: new Date().toLocaleDateString("en-IE", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }),
+      // Fetch booking details from API
+      fetch(`/api/booking/${sessionId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          setBookingDetails({
+            sessionId: data.stripeSessionId,
+            amount: data.amount || 85,
+            currency: "EUR",
+            date: new Date(data.datePreference).toLocaleDateString("en-IE", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }),
+          });
+          setLoading(false);
+        })
+        .catch(() => {
+          // Fallback to default data if API fails
+          setBookingDetails({
+            sessionId,
+            amount: 85,
+            currency: "EUR",
+            date: new Date().toLocaleDateString("en-IE", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }),
+          });
+          setLoading(false);
         });
-      }, 1000);
     } else {
       setLoading(false);
     }

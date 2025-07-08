@@ -12,9 +12,15 @@ const nextConfig = {
         hostname: "cdnjs.cloudflare.com",
       },
     ],
+    unoptimized: true,
   },
-  // Enable static exports for Netlify
-  output: "standalone",
+  // Netlify specific configuration
+  output: "export",
+  distDir: "out",
+  // Allow client-side only pages
+  experimental: {
+    missingSuspenseWithCSRError: false,
+  },
 };
 
 export default nextConfig;

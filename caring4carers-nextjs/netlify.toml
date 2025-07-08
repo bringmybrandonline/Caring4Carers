@@ -1,6 +1,6 @@
 [build]
   base = "caring4carers-nextjs"
-  command = "npm run build"
+  command = "npx prisma generate && npm run build"
   publish = "out"
 
 [build.environment]
