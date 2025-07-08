@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "bookings" (
+CREATE TABLE IF NOT EXISTS "bookings" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -12,12 +12,11 @@ CREATE TABLE "bookings" (
     "amount" DOUBLE PRECISION,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-
     CONSTRAINT "bookings_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "retreat_dates" (
+CREATE TABLE IF NOT EXISTS "retreat_dates" (
     "id" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "maxParticipants" INTEGER NOT NULL DEFAULT 12,
@@ -27,12 +26,11 @@ CREATE TABLE "retreat_dates" (
     "status" TEXT NOT NULL DEFAULT 'active',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-
     CONSTRAINT "retreat_dates_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "gift_cards" (
+CREATE TABLE IF NOT EXISTS "gift_cards" (
     "id" TEXT NOT NULL,
     "code" TEXT NOT NULL,
     "amount" DOUBLE PRECISION NOT NULL,
@@ -43,9 +41,8 @@ CREATE TABLE "gift_cards" (
     "redeemedAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-
     CONSTRAINT "gift_cards_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "gift_cards_code_key" ON "gift_cards"("code"); 
+CREATE UNIQUE INDEX IF NOT EXISTS "gift_cards_code_key" ON "gift_cards"("code"); 
