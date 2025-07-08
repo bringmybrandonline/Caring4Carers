@@ -14,17 +14,22 @@ const bookingSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  console.log("Received booking request");
+
   try {
     const body = await request.json();
+    console.log("Request body:", body);
 
     // Validate the request data
     const validatedData = bookingSchema.parse(body);
+    console.log("Validated data:", validatedData);
 
     let finalAmount = 85.0; // Default price
     let giftCard = null;
 
     // If using gift card, validate and apply it
     if (validatedData.paymentMethod === "giftcard") {
+      console.log("Processing gift card payment");
       if (!validatedData.giftCardCode) {
         return NextResponse.json(
           { error: "Gift card code is required" },
@@ -35,6 +40,7 @@ export async function POST(request: NextRequest) {
       giftCard = await prisma.giftCard.findUnique({
         where: { code: validatedData.giftCardCode },
       });
+      console.log("Found gift card:", giftCard);
 
       if (!giftCard) {
         return NextResponse.json(
@@ -52,8 +58,10 @@ export async function POST(request: NextRequest) {
 
       // Apply gift card amount
       finalAmount = Math.max(0, finalAmount - giftCard.amount);
+      console.log("Final amount after gift card:", finalAmount);
     }
 
+    console.log("Creating booking record");
     // Save booking to database
     const booking = await prisma.booking.create({
       data: {
@@ -65,9 +73,11 @@ export async function POST(request: NextRequest) {
         amount: finalAmount,
       },
     });
+    console.log("Created booking:", booking);
 
     // If using gift card and it covers the full amount
     if (validatedData.paymentMethod === "giftcard" && finalAmount === 0) {
+      console.log("Processing full gift card payment");
       // Mark the gift card as redeemed
       await prisma.giftCard.update({
         where: { id: giftCard!.id },
@@ -99,10 +109,12 @@ export async function POST(request: NextRequest) {
 
     // If there's still an amount to pay, create Stripe checkout session
     try {
+      console.log("Creating Stripe checkout session");
       // Get the base URL from the request
       const protocol = request.headers.get("x-forwarded-proto") || "http";
       const host = request.headers.get("host");
       const baseUrl = `${protocol}://${host}`;
+      console.log("Base URL:", baseUrl);
 
       const stripeResponse = await fetch(`${baseUrl}/api/stripe/checkout`, {
         method: "POST",
@@ -111,9 +123,11 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({ bookingId: booking.id }),
       });
+      console.log("Stripe response status:", stripeResponse.status);
 
       if (stripeResponse.ok) {
         const stripeData = await stripeResponse.json();
+        console.log("Stripe session created:", stripeData);
 
         // If using gift card, mark it as redeemed
         if (validatedData.paymentMethod === "giftcard") {
@@ -137,6 +151,7 @@ export async function POST(request: NextRequest) {
           { status: 200 }
         );
       } else if (stripeResponse.status === 503) {
+        console.log("Stripe not configured");
         // Stripe not configured - this is expected during development
         return NextResponse.json(
           {
@@ -149,6 +164,7 @@ export async function POST(request: NextRequest) {
           { status: 200 }
         );
       } else {
+        console.log("Other Stripe error");
         // Other Stripe errors
         return NextResponse.json(
           {
@@ -174,6 +190,8 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (error) {
+    console.error("Booking API error:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Validation failed", details: error.errors },
@@ -181,9 +199,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error("Booking API error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      {
+        error: "Internal server error",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 }
     );
   }

@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -14,9 +13,6 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  // Netlify specific configuration
-  output: "export",
-  distDir: "out",
 };
 
 export default nextConfig;
