@@ -33,7 +33,7 @@ function GiftCardSuccessContent() {
       });
   }, [code]);
 
-  if (loading) {
+  if (loading || !code) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500"></div>
@@ -96,6 +96,7 @@ function GiftCardSuccessContent() {
                 <div className="text-2xl font-mono font-bold text-indigo-600 tracking-wider">
                   {code}
                 </div>
+                {/* We know code is not null here because we checked above */}
                 <CopyButton code={code} />
               </div>
             </div>
