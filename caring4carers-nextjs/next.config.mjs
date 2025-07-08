@@ -13,6 +13,8 @@ const nextConfig = {
       },
     ],
   },
+  // Enable static exports for Netlify
+  output: "standalone",
 };
 
 export default nextConfig;
