@@ -1,17 +1,18 @@
-import { Handler } from "@netlify/functions";
+import type { Context } from "@netlify/functions";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const handler: Handler = async (event) => {
+export default async function handler(req: Request, context: Context) {
   // Extract session ID from query parameters
-  const sessionId = event.queryStringParameters?.sessionId;
+  const url = new URL(req.url);
+  const sessionId = url.searchParams.get("sessionId");
 
   if (!sessionId) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: "Session ID required" }),
-    };
+    return new Response(JSON.stringify({ error: "Session ID required" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   try {
@@ -20,22 +21,22 @@ export const handler: Handler = async (event) => {
     });
 
     if (!booking) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: "Booking not found" }),
-      };
+      return new Response(JSON.stringify({ error: "Booking not found" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(booking),
-    };
+    return new Response(JSON.stringify(booking), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Server error" }),
-    };
+    return new Response(JSON.stringify({ error: "Server error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   } finally {
     await prisma.$disconnect();
   }
-};
+}
