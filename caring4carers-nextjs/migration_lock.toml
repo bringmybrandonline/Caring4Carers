@@ -1,7 +1,7 @@
 [build]
   base = "caring4carers-nextjs"
   command = "npm install && npx prisma generate && npx prisma migrate deploy && npm run build"
-  publish = "caring4carers-nextjs/.next"
+  publish = ".next"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
