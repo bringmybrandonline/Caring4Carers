@@ -14,7 +14,7 @@ export default function Home() {
   const [isValidatingGiftCard, setIsValidatingGiftCard] = useState(false);
   const [giftCardAmount, setGiftCardAmount] = useState<number | null>(null);
   const [remainingBalance, setRemainingBalance] = useState<number | null>(null);
-  const RETREAT_PRICE = 85.0;
+  const RETREAT_PRICE = 75.0;
 
   useEffect(() => {
     // Smooth scrolling for navigation links
@@ -540,8 +540,55 @@ export default function Home() {
                   <div className="detail-item">
                     <i className="fas fa-map-marker-alt"></i>
                     <div>
-                      <strong>Location:</strong>
-                      <span>Beautiful venues across Leinster</span>
+                      <strong>Venues & Dates:</strong>
+                      <div className="venues-list">
+                        <div className="venue-group">
+                          <strong>Dublin:</strong>
+                          <ul>
+                            <li>Ballybough - 28 Feb 2026</li>
+                            <li>Saggart - 21 Mar 2026</li>
+                            <li>Tallaght - 17 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kildare:</strong>
+                          <ul>
+                            <li>Athy - 27 Sep 2025</li>
+                            <li>Maynooth - 19 Oct 2025</li>
+                            <li>Kildare Town - 15 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kilkenny:</strong>
+                          <ul>
+                            <li>Kilkenny City - 11 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Laois:</strong>
+                          <ul>
+                            <li>Portlaoise - 07 Feb 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Offaly:</strong>
+                          <ul>
+                            <li>Tullamore - 22 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wexford:</strong>
+                          <ul>
+                            <li>New Ross - 07 Mar 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wicklow:</strong>
+                          <ul>
+                            <li>Bray - 06 Dec 2025</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="detail-item">
@@ -555,37 +602,64 @@ export default function Home() {
                     <i className="fas fa-euro-sign"></i>
                     <div>
                       <strong>Investment:</strong>
-                      <span>€85 (includes everything)</span>
+                      <span>€75.00 (includes everything)</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="booking-features">
-                  <h4>What&apos;s Included:</h4>
-                  <ul>
-                    <li>
-                      <i className="fas fa-check"></i> All mindfulness and
-                      movement sessions
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Nutritious lunch and
-                      refreshments
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Sound healing sessions
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Take-home self-care
-                      toolkit
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Ongoing support resources
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> A day dedicated entirely
-                      to you
-                    </li>
-                  </ul>
+                  <h4>What the Day Looks Like</h4>
+                  <div className="schedule-timeline">
+                    <div className="schedule-item">
+                      <div className="schedule-time">🕙 10:00 – 10:30</div>
+                      <div className="schedule-content">
+                        <strong>Welcome & Introductions</strong>
+                        <p>Arrive, settle in, and meet the group in a warm, relaxed space. A gentle start to ease into the day.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">🧘‍♀️ 10:30 – 11:15</div>
+                      <div className="schedule-content">
+                        <strong>Gentle Movement</strong>
+                        <p>Slow, mindful movement to release tension and reconnect with the body.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">🎶 11:15 – 12:15</div>
+                      <div className="schedule-content">
+                        <strong>Sound Therapy</strong>
+                        <p>Let soothing vibrations calm your nervous system and quiet the mind.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">💧 12:15 – 12:30</div>
+                      <div className="schedule-content">
+                        <strong>Hydration & Mindfulness</strong>
+                        <p>Sip, breathe, pause — a moment of presence and grounding.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">🧘 12:30 – 13:15</div>
+                      <div className="schedule-content">
+                        <strong>Guided Meditation</strong>
+                        <p>Drift into deep relaxation with supportive, calming guidance.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">☕ 13:15 – 14:00</div>
+                      <div className="schedule-content">
+                        <strong>Reflection & Light Refreshments</strong>
+                        <p>Space to share, reflect, and connect with others over tea and treats.</p>
+                      </div>
+                    </div>
+                    <div className="schedule-item">
+                      <div className="schedule-time">👋 14:00</div>
+                      <div className="schedule-content">
+                        <strong>Goodbyes</strong>
+                        <p>Leave feeling lighter, nourished, and reconnected — this time is for you.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -608,30 +682,40 @@ export default function Home() {
                       <input type="tel" id="phone" name="phone" required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="date-preference">Preferred Date</label>
-                      <input
-                        type="date"
+                      <label htmlFor="date-preference">Preferred Venue & Date</label>
+                      <select
                         id="date-preference"
                         name="date-preference"
                         required
-                        min={new Date().toISOString().split("T")[0]}
-                        className="date-picker"
-                      />
-                      <small className="date-helper">
-                        Select your preferred retreat date. We run retreats on
-                        Saturdays.
-                      </small>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="requirements">
-                        Special Requirements (optional)
-                      </label>
-                      <textarea
-                        id="requirements"
-                        name="requirements"
-                        rows={3}
-                        placeholder="Dietary requirements, mobility considerations, etc."
-                      ></textarea>
+                        className="venue-select"
+                      >
+                        <option value="">Select a venue and date</option>
+                        <optgroup label="Dublin">
+                          <option value="ballybough-28-feb-2026">Ballybough - 28 Feb 2026</option>
+                          <option value="saggart-21-mar-2026">Saggart - 21 Mar 2026</option>
+                          <option value="tallaght-17-jan-2026">Tallaght - 17 Jan 2026</option>
+                        </optgroup>
+                        <optgroup label="Kildare">
+                          <option value="athy-27-sep-2025">Athy - 27 Sep 2025</option>
+                          <option value="maynooth-19-oct-2025">Maynooth - 19 Oct 2025</option>
+                          <option value="kildare-town-15-nov-2025">Kildare Town - 15 Nov 2025</option>
+                        </optgroup>
+                        <optgroup label="Kilkenny">
+                          <option value="kilkenny-city-11-jan-2026">Kilkenny City - 11 Jan 2026</option>
+                        </optgroup>
+                        <optgroup label="Laois">
+                          <option value="portlaoise-07-feb-2026">Portlaoise - 07 Feb 2026</option>
+                        </optgroup>
+                        <optgroup label="Offaly">
+                          <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
+                        </optgroup>
+                        <optgroup label="Wexford">
+                          <option value="new-ross-07-mar-2026">New Ross - 07 Mar 2026</option>
+                        </optgroup>
+                        <optgroup label="Wicklow">
+                          <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
+                        </optgroup>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label>Payment Method</label>

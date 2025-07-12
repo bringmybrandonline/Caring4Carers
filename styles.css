@@ -641,7 +641,138 @@ body {
   color: #a0aec0;
 }
 
-/* Responsive Design */
+/* Venues List Styling */
+.venues-list {
+  margin-top: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9fafb;
+}
+
+.venue-group {
+  margin-bottom: 1rem;
+}
+
+.venue-group:last-child {
+  margin-bottom: 0;
+}
+
+.venue-group strong {
+  color: #2b6cb0;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.venue-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.venue-group li {
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.venue-group li:before {
+  content: "•";
+  color: #2b6cb0;
+  position: absolute;
+  left: 0;
+}
+
+.venue-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.venue-select:focus {
+  outline: none;
+  border-color: #2b6cb0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+
+.venue-select optgroup {
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+.venue-select option {
+  padding: 0.5rem;
+  color: #4b5563;
+}
+
+/* Schedule Timeline Styling */
+.schedule-timeline {
+  margin-top: 1rem;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(43, 108, 176, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #2b6cb0;
+  transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+  background: rgba(43, 108, 176, 0.1);
+  transform: translateX(5px);
+}
+
+.schedule-item:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-time {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2b6cb0;
+  white-space: nowrap;
+  min-width: 140px;
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.schedule-content {
+  flex: 1;
+}
+
+.schedule-content strong {
+  display: block;
+  color: #1a202c;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.schedule-content p {
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive adjustments for schedule */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -704,6 +835,39 @@ body {
   .hero-features {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .venues-list {
+    max-height: 150px;
+    padding: 0.75rem;
+  }
+  
+  .venue-group strong {
+    font-size: 0.85rem;
+  }
+  
+  .venue-group li {
+    font-size: 0.8rem;
+  }
+
+  .schedule-item {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .schedule-time {
+    min-width: auto;
+    width: fit-content;
+    align-self: flex-start;
+  }
+  
+  .schedule-content strong {
+    font-size: 0.95rem;
+  }
+  
+  .schedule-content p {
+    font-size: 0.85rem;
   }
 }
 
