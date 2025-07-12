@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
@@ -585,24 +590,25 @@ body {
 @media (max-width: 768px) {
   .schedule .schedule-timeline {
     max-width: 100%;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
   }
   
   .schedule .schedule-timeline::before {
-    left: 40px;
+    left: 30px;
     width: 3px;
   }
   
   .schedule .schedule-item {
     flex-direction: row !important;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 2rem;
-    margin-left: 80px;
+    margin-left: 60px;
+    margin-right: 0.5rem;
   }
   
   .schedule .schedule-item::before {
-    left: 40px;
+    left: 30px;
     top: 1.5rem;
     transform: translate(-50%, 0);
     width: 16px;
@@ -611,18 +617,21 @@ body {
   }
   
   .schedule .schedule-time {
-    min-width: 140px;
-    font-size: 0.95rem;
-    padding: 1rem 1.5rem;
+    min-width: 100px;
+    max-width: 120px;
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
     border-radius: 1rem;
+    flex-shrink: 0;
   }
   
   .schedule .schedule-content {
     max-width: none;
     flex: 1;
     margin-left: 0;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.5rem;
     border-radius: 1rem;
+    min-width: 0;
   }
   
   .schedule .schedule-content::before {
@@ -634,35 +643,42 @@ body {
   }
   
   .schedule .schedule-content p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
 
 @media (max-width: 480px) {
+  .schedule .schedule-timeline {
+    padding: 1rem 0.25rem;
+  }
+  
   .schedule .schedule-timeline::before {
-    left: 30px;
+    left: 25px;
   }
   
   .schedule .schedule-item {
-    margin-left: 60px;
-    gap: 1rem;
+    margin-left: 50px;
+    margin-right: 0.25rem;
+    gap: 0.75rem;
   }
   
   .schedule .schedule-item::before {
-    left: 30px;
+    left: 25px;
     width: 14px;
     height: 14px;
     border-width: 3px;
   }
   
   .schedule .schedule-time {
-    min-width: 120px;
-    font-size: 0.85rem;
-    padding: 0.75rem 1rem;
+    min-width: 80px;
+    max-width: 100px;
+    font-size: 0.8rem;
+    padding: 0.6rem 0.8rem;
   }
   
   .schedule .schedule-content {
-    padding: 1.25rem 1.5rem;
+    padding: 1.25rem 1.25rem;
   }
   
   .schedule .schedule-content strong {
@@ -671,8 +687,8 @@ body {
   }
   
   .schedule .schedule-content p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 }
 
