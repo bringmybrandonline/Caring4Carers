@@ -267,10 +267,10 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-content">
             <h1 className="hero-title">
-              Wellness Day Retreats for Carers in Leinster
+              Caring 4 Carers Wellness Day Retreat
             </h1>
             <p className="hero-subtitle">
-              Rediscover yourself through mindfulness, movement, and relaxation.
+              Rediscover yourself through mindfulness, movement, sound healing, and relaxation.
               You dedicate your life to caring for others – now it&apos;s time
               to care for yourself.
             </p>
@@ -292,7 +292,7 @@ export default function Home() {
               Book Your Day Retreat
             </a>
             <p className="hero-note">
-              Includes nourishing lunch • Secure booking via Stripe
+              Secure booking via Stripe
             </p>
           </div>
           <div className="hero-image">
@@ -324,7 +324,7 @@ export default function Home() {
 
               <p>
                 After years of witnessing the selfless dedication of carers –
-                whether caring for aging parents, children with special needs,
+                whether caring for aging parents, adults or children with additional needs,
                 or family members with chronic illnesses – I noticed a
                 heartbreaking pattern. These incredible individuals were pouring
                 all their energy into others, leaving nothing for themselves.
@@ -345,7 +345,7 @@ export default function Home() {
               </p>
 
               <p>
-                Our wellness day retreats in the beautiful Leinster area
+                Our wellness day retreats
                 aren&apos;t just about relaxation – they&apos;re about
                 recognition, renewal, and connection. Every element is designed
                 specifically for carers who rarely get the chance to put
@@ -478,17 +478,16 @@ export default function Home() {
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-gift"></i>
+                <i className="fas fa-music"></i>
               </div>
-              <h3>Take-Home Resources</h3>
+              <h3>Sound Healing</h3>
               <p>
-                Leave with practical tools and techniques you can integrate into
-                your daily routine to maintain your wellbeing.
+                Experience the therapeutic power of sound through guided sound healing sessions that help restore balance and promote deep relaxation.
               </p>
               <ul>
-                <li>Self-care toolkit</li>
-                <li>Guided meditation recordings</li>
-                <li>Ongoing support resources</li>
+                <li>Therapeutic sound baths</li>
+                <li>Guided meditation with sound</li>
+                <li>Deep healing frequencies</li>
               </ul>
             </div>
           </div>
@@ -521,7 +520,7 @@ export default function Home() {
       <section id="booking" className="booking">
         <div className="container">
           <div className="booking-content">
-            <h2>Book Your Wellness Day Retreat</h2>
+            <h2>Book your day retreat</h2>
             <p className="booking-subtitle">
               Take the first step towards putting yourself first. You deserve
               this time to restore and rejuvenate.
@@ -571,6 +570,9 @@ export default function Home() {
                     <li>
                       <i className="fas fa-check"></i> Nutritious lunch and
                       refreshments
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i> Sound healing sessions
                     </li>
                     <li>
                       <i className="fas fa-check"></i> Take-home self-care
@@ -772,9 +774,8 @@ export default function Home() {
             <div className="footer-section">
               <h3>Caring4Carers</h3>
               <p>
-                Wellness day retreats designed specifically for carers across
-                the beautiful Leinster area. Because those who care for others
-                deserve to be cared for too.
+                Wellness day retreats designed specifically for carers.
+                Because those who care for others deserve to be cared for too.
               </p>
             </div>
             <div className="footer-section">

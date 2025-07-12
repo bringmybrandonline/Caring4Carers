@@ -4,9 +4,9 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
-    "Caring4Carers - Wellness Day Retreats for Carers in Leinster | Mindfulness & Self-Care",
+    "Caring4Carers - Caring 4 Carers Wellness Day Retreat | Mindfulness & Self-Care",
   description:
-    "Join Caring4Carers wellness day retreats in Leinster. Mindfulness, movement, and relaxation designed specifically for carers. Book your rejuvenating day retreat today.",
+    "Join Caring4Carers wellness day retreats. Mindfulness, movement, and relaxation designed specifically for carers. Book your rejuvenating day retreat today.",
   keywords:
     "carer wellness Leinster, day retreat for carers, wellness retreat Leinster, carer self-care, mindfulness for carers, carer support Ireland",
 };
