@@ -399,16 +399,16 @@ export default function Home() {
               <div className="card-icon">
                 <i className="fas fa-leaf"></i>
               </div>
-              <h3>Mindfulness Sessions</h3>
+              <h3>Mindfulness</h3>
               <p>
-                Guided meditation and breathing exercises to help you reconnect
+                Guided mindfulness and breathing exercises to help you reconnect
                 with the present moment and find inner peace amidst life&apos;s
                 demands.
               </p>
               <ul>
-                <li>Stress reduction techniques</li>
+                <li>Breathing exercises</li>
                 <li>Emotional regulation practices</li>
-                <li>Tools you can use at home</li>
+                <li>Body awareness practices</li>
               </ul>
             </div>
 
@@ -418,13 +418,12 @@ export default function Home() {
               </div>
               <h3>Gentle Movement</h3>
               <p>
-                Therapeutic movement sessions designed to release physical
-                tension and boost your energy, suitable for all fitness levels.
+                Traditional Ancient therapeutic practices is designed to benifit overall health, release physical tension and boost energy, Suitable for all fitness levels.
               </p>
               <ul>
-                <li>Yoga and stretching</li>
-                <li>Nature walks</li>
-                <li>Chair-based exercises</li>
+                <li>Genlte blowing sequence</li>
+                <li>Breath focues movement</li>
+                <li>Restorative poses</li>
               </ul>
             </div>
 
@@ -462,17 +461,16 @@ export default function Home() {
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-utensils"></i>
+                <i className="fas fa-spa"></i>
               </div>
-              <h3>Nourishing Lunch</h3>
+              <h3>Meditation & Visualisation</h3>
               <p>
-                Enjoy a carefully prepared, nutritious meal in peaceful
-                surroundings – no planning, preparing, or cleaning required.
+                Experience inner stillness and clarity through gentle guided practises that calm mind and soothe the soul.
               </p>
               <ul>
-                <li>Fresh, local ingredients</li>
-                <li>Dietary requirements catered</li>
-                <li>Mindful eating practices</li>
+                <li>Breath-focused meditation</li>
+                <li>Guided meditation for emotional release</li>
+                <li>Practises to carry calm into your daily life</li>
               </ul>
             </div>
 
@@ -480,14 +478,15 @@ export default function Home() {
               <div className="card-icon">
                 <i className="fas fa-music"></i>
               </div>
-              <h3>Sound Healing</h3>
+              <h3>Sound Therapy</h3>
               <p>
-                Experience the therapeutic power of sound through guided sound healing sessions that help restore balance and promote deep relaxation.
+                A deeply relaxing experience using healing sounds and vibrations to calm the mind and restore balance to the body.
               </p>
               <ul>
-                <li>Therapeutic sound baths</li>
-                <li>Guided meditation with sound</li>
-                <li>Deep healing frequencies</li>
+                <li>Reduces stress anxiety</li>
+                <li>Promotes deep rest and better sleep</li>
+                <li>Support emotional release and and nervous system regulation</li>
+                <li>No effort needed - simply lie back and let the sound do the work.</li>
               </ul>
             </div>
           </div>
@@ -506,10 +505,6 @@ export default function Home() {
               <div className="benefit">
                 <i className="fas fa-users-line"></i>
                 <span>Connected & Supported</span>
-              </div>
-              <div className="benefit">
-                <i className="fas fa-toolbox"></i>
-                <span>Equipped with Tools</span>
               </div>
             </div>
           </div>
@@ -534,7 +529,7 @@ export default function Home() {
                     <i className="fas fa-clock"></i>
                     <div>
                       <strong>Duration:</strong>
-                      <span>Full Day (9:30 AM - 4:30 PM)</span>
+                      <span>10:00 AM - 2:00 PM (unless told otherwise)</span>
                     </div>
                   </div>
                   <div className="detail-item">
