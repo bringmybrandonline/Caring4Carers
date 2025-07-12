@@ -241,6 +241,9 @@ export default function Home() {
               <a href="#experience">What to Expect</a>
             </li>
             <li>
+              <a href="#schedule">Schedule</a>
+            </li>
+            <li>
               <a href="/gift-cards" className="nav-link">
                 Gift Cards
               </a>
@@ -270,7 +273,7 @@ export default function Home() {
               Caring 4 Carers Wellness Day Retreat
             </h1>
             <p className="hero-subtitle">
-              Rediscover yourself through mindfulness, movement, sound healing, and relaxation.
+              Rediscover yourself through mindfulness, movement, sound therapy, and relaxation.
               You dedicate your life to caring for others – now it&apos;s time
               to care for yourself.
             </p>
@@ -286,6 +289,10 @@ export default function Home() {
               <div className="feature">
                 <i className="fas fa-spa"></i>
                 <span>Relaxation</span>
+              </div>
+              <div className="feature">
+                <i className="fas fa-music"></i>
+                <span>Sound Therapy</span>
               </div>
             </div>
             <a href="#booking" className="cta-button primary">
@@ -418,10 +425,10 @@ export default function Home() {
               </div>
               <h3>Gentle Movement</h3>
               <p>
-                Traditional Ancient therapeutic practices is designed to benifit overall health, release physical tension and boost energy, Suitable for all fitness levels.
+                Traditional Ancient therapeutic practices is designed to benefit overall health, release physical tension and boost energy, Suitable for all fitness levels.
               </p>
               <ul>
-                <li>Genlte blowing sequence</li>
+                <li>Gentle blowing sequence</li>
                 <li>Breath focues movement</li>
                 <li>Restorative poses</li>
               </ul>
@@ -445,31 +452,15 @@ export default function Home() {
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-users"></i>
-              </div>
-              <h3>Connection & Community</h3>
-              <p>
-                Connect with other carers in a supportive, understanding
-                environment where you can share experiences and feel less alone.
-              </p>
-              <ul>
-                <li>Small group discussions</li>
-                <li>Peer support circles</li>
-                <li>Shared lunch experience</li>
-              </ul>
-            </div>
-
-            <div className="experience-card">
-              <div className="card-icon">
-                <i className="fas fa-spa"></i>
+                <i className="fas fa-utensils"></i>
               </div>
               <h3>Meditation & Visualisation</h3>
               <p>
-                Experience inner stillness and clarity through gentle guided practises that calm mind and soothe the soul.
+                Experience inner stillness and clarity through gentle guided practises that calm the mind and soothe the soul.
               </p>
               <ul>
                 <li>Breath-focused meditation</li>
-                <li>Guided meditation for emotional release</li>
+                <li>Guided visualisation for emotional release</li>
                 <li>Practises to carry calm into your daily life</li>
               </ul>
             </div>
@@ -485,8 +476,7 @@ export default function Home() {
               <ul>
                 <li>Reduces stress anxiety</li>
                 <li>Promotes deep rest and better sleep</li>
-                <li>Support emotional release and and nervous system regulation</li>
-                <li>No effort needed - simply lie back and let the sound do the work.</li>
+                <li>Support emotional release and nervous system regulation</li>
               </ul>
             </div>
           </div>
@@ -505,6 +495,68 @@ export default function Home() {
               <div className="benefit">
                 <i className="fas fa-users-line"></i>
                 <span>Connected & Supported</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule Section */}
+      <section id="schedule" className="schedule">
+        <div className="container">
+          <h2 className="section-title">What the Day Looks Like</h2>
+          <p className="section-subtitle">
+            A carefully crafted timeline designed to nurture your mind, body, and spirit
+          </p>
+          
+          <div className="schedule-timeline">
+            <div className="schedule-item">
+              <div className="schedule-time">🕙 10:00 – 10:30</div>
+              <div className="schedule-content">
+                <strong>Welcome & Introductions</strong>
+                <p>Arrive, settle in, and meet the group in a warm, relaxed space. A gentle start to ease into the day.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🧘‍♀️ 10:30 – 11:15</div>
+              <div className="schedule-content">
+                <strong>Gentle Movement</strong>
+                <p>Slow, mindful movement to release tension and reconnect with the body.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🎶 11:15 – 12:15</div>
+              <div className="schedule-content">
+                <strong>Sound Therapy</strong>
+                <p>Let soothing vibrations calm your nervous system and quiet the mind.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">💧 12:15 – 12:30</div>
+              <div className="schedule-content">
+                <strong>Hydration & Mindfulness</strong>
+                <p>Sip, breathe, pause — a moment of presence and grounding.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🧘 12:30 – 13:15</div>
+              <div className="schedule-content">
+                <strong>Guided Meditation</strong>
+                <p>Drift into deep relaxation with supportive, calming guidance.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">☕ 13:15 – 14:00</div>
+              <div className="schedule-content">
+                <strong>Reflection & Light Refreshments</strong>
+                <p>Space to share, reflect, and connect with others over tea and treats.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">👋 14:00</div>
+              <div className="schedule-content">
+                <strong>Goodbyes</strong>
+                <p>Leave feeling lighter, nourished, and reconnected — this time is for you.</p>
               </div>
             </div>
           </div>
@@ -574,7 +626,7 @@ export default function Home() {
                         <div className="venue-group">
                           <strong>Wexford:</strong>
                           <ul>
-                            <li>New Ross - 07 Mar 2026</li>
+                            <li>New Ross - 08 Mar 2026</li>
                           </ul>
                         </div>
                         <div className="venue-group">
@@ -590,71 +642,26 @@ export default function Home() {
                     <i className="fas fa-users"></i>
                     <div>
                       <strong>Group Size:</strong>
-                      <span>Small groups (max 12 people)</span>
+                      <span>Small groups (max 15 people)</span>
                     </div>
                   </div>
                   <div className="detail-item">
                     <i className="fas fa-euro-sign"></i>
                     <div>
                       <strong>Investment:</strong>
-                      <span>€75.00 (includes everything)</span>
+                      <span>€75.00</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="booking-features">
-                  <h4>What the Day Looks Like</h4>
-                  <div className="schedule-timeline">
-                    <div className="schedule-item">
-                      <div className="schedule-time">🕙 10:00 – 10:30</div>
-                      <div className="schedule-content">
-                        <strong>Welcome & Introductions</strong>
-                        <p>Arrive, settle in, and meet the group in a warm, relaxed space. A gentle start to ease into the day.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">🧘‍♀️ 10:30 – 11:15</div>
-                      <div className="schedule-content">
-                        <strong>Gentle Movement</strong>
-                        <p>Slow, mindful movement to release tension and reconnect with the body.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">🎶 11:15 – 12:15</div>
-                      <div className="schedule-content">
-                        <strong>Sound Therapy</strong>
-                        <p>Let soothing vibrations calm your nervous system and quiet the mind.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">💧 12:15 – 12:30</div>
-                      <div className="schedule-content">
-                        <strong>Hydration & Mindfulness</strong>
-                        <p>Sip, breathe, pause — a moment of presence and grounding.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">🧘 12:30 – 13:15</div>
-                      <div className="schedule-content">
-                        <strong>Guided Meditation</strong>
-                        <p>Drift into deep relaxation with supportive, calming guidance.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">☕ 13:15 – 14:00</div>
-                      <div className="schedule-content">
-                        <strong>Reflection & Light Refreshments</strong>
-                        <p>Space to share, reflect, and connect with others over tea and treats.</p>
-                      </div>
-                    </div>
-                    <div className="schedule-item">
-                      <div className="schedule-time">👋 14:00</div>
-                      <div className="schedule-content">
-                        <strong>Goodbyes</strong>
-                        <p>Leave feeling lighter, nourished, and reconnected — this time is for you.</p>
-                      </div>
-                    </div>
-                  </div>
+                  <h4>Additional Details</h4>
+                  <ul>
+                    <li><i className="fas fa-check"></i>All materials and refreshments provided</li>
+                    <li><i className="fas fa-check"></i>Comfortable clothing recommended</li>
+                    <li><i className="fas fa-check"></i>No experience necessary - all levels welcome</li>
+                    <li><i className="fas fa-check"></i>Parking available at all venues</li>
+                  </ul>
                 </div>
               </div>
 
@@ -705,7 +712,7 @@ export default function Home() {
                           <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
                         </optgroup>
                         <optgroup label="Wexford">
-                          <option value="new-ross-07-mar-2026">New Ross - 07 Mar 2026</option>
+                          <option value="new-ross-08-mar-2026">New Ross - 08 Mar 2026</option>
                         </optgroup>
                         <optgroup label="Wicklow">
                           <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
@@ -868,6 +875,9 @@ export default function Home() {
                 </li>
                 <li>
                   <a href="#experience">What to Expect</a>
+                </li>
+                <li>
+                  <a href="#schedule">Schedule</a>
                 </li>
                 <li>
                   <a href="#booking">Book Now</a>
