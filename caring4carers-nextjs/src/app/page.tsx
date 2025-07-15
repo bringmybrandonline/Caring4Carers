@@ -228,28 +228,51 @@ export default function Home() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
-            <h2>Caring4Carers</h2>
+            <Image
+              src="/images/logo.jpeg"
+              alt="Caring4Carers Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </div>
           <ul className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
             <li>
-              <a href="#home">Home</a>
+              <a href="#home" onClick={() => setIsMenuOpen(false)}>
+                Home
+              </a>
             </li>
             <li>
-              <a href="#story">Our Story</a>
+              <a href="#story" onClick={() => setIsMenuOpen(false)}>
+                Our Story
+              </a>
             </li>
             <li>
-              <a href="#experience">What to Expect</a>
+              <a href="#experience" onClick={() => setIsMenuOpen(false)}>
+                What to Expect
+              </a>
             </li>
             <li>
-              <a href="#schedule">Schedule</a>
+              <a href="#schedule" onClick={() => setIsMenuOpen(false)}>
+                Schedule
+              </a>
             </li>
             <li>
-              <a href="/gift-cards" className="nav-link">
+              <a
+                href="/gift-cards"
+                className="nav-link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Gift Cards
               </a>
             </li>
             <li>
-              <a href="#booking" className="nav-cta">
+              <a
+                href="#booking"
+                className="nav-cta"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Book Now
               </a>
             </li>
@@ -269,13 +292,11 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">
-              Caring 4 Carers Wellness Day Retreat
-            </h1>
+            <h1 className="hero-title">Caring 4 Carers Wellness Day Retreat</h1>
             <p className="hero-subtitle">
-              Rediscover yourself through mindfulness, movement, sound therapy, and relaxation.
-              You dedicate your life to caring for others – now it&apos;s time
-              to care for yourself.
+              Rediscover yourself through mindfulness, movement, sound therapy,
+              and relaxation. You dedicate your life to caring for others – now
+              it&apos;s time to care for yourself.
             </p>
             <div className="hero-features">
               <div className="feature">
@@ -298,9 +319,7 @@ export default function Home() {
             <a href="#booking" className="cta-button primary">
               Book Your Day Retreat
             </a>
-            <p className="hero-note">
-              Secure booking via Stripe
-            </p>
+            <p className="hero-note">Secure booking via Stripe</p>
           </div>
           <div className="hero-image">
             <Image
@@ -331,10 +350,11 @@ export default function Home() {
 
               <p>
                 After years of witnessing the selfless dedication of carers –
-                whether caring for aging parents, adults or children with additional needs,
-                or family members with chronic illnesses – I noticed a
-                heartbreaking pattern. These incredible individuals were pouring
-                all their energy into others, leaving nothing for themselves.
+                whether caring for aging parents, adults or children with
+                additional needs, or family members with chronic illnesses – I
+                noticed a heartbreaking pattern. These incredible individuals
+                were pouring all their energy into others, leaving nothing for
+                themselves.
               </p>
 
               <p>
@@ -352,11 +372,10 @@ export default function Home() {
               </p>
 
               <p>
-                Our wellness day retreats
-                aren&apos;t just about relaxation – they&apos;re about
-                recognition, renewal, and connection. Every element is designed
-                specifically for carers who rarely get the chance to put
-                themselves first.
+                Our wellness day retreats aren&apos;t just about relaxation –
+                they&apos;re about recognition, renewal, and connection. Every
+                element is designed specifically for carers who rarely get the
+                chance to put themselves first.
               </p>
             </div>
             <div className="story-media">
@@ -425,7 +444,9 @@ export default function Home() {
               </div>
               <h3>Gentle Movement</h3>
               <p>
-                Traditional Ancient therapeutic practices is designed to benefit overall health, release physical tension and boost energy, Suitable for all fitness levels.
+                Traditional Ancient therapeutic practices is designed to benefit
+                overall health, release physical tension and boost energy,
+                Suitable for all fitness levels.
               </p>
               <ul>
                 <li>Gentle blowing sequence</li>
@@ -456,7 +477,8 @@ export default function Home() {
               </div>
               <h3>Meditation & Visualisation</h3>
               <p>
-                Experience inner stillness and clarity through gentle guided practises that calm the mind and soothe the soul.
+                Experience inner stillness and clarity through gentle guided
+                practises that calm the mind and soothe the soul.
               </p>
               <ul>
                 <li>Breath-focused meditation</li>
@@ -471,7 +493,8 @@ export default function Home() {
               </div>
               <h3>Sound Therapy</h3>
               <p>
-                A deeply relaxing experience using healing sounds and vibrations to calm the mind and restore balance to the body.
+                A deeply relaxing experience using healing sounds and vibrations
+                to calm the mind and restore balance to the body.
               </p>
               <ul>
                 <li>Reduces stress anxiety</li>
@@ -506,29 +529,39 @@ export default function Home() {
         <div className="container">
           <h2 className="section-title">What the Day Looks Like</h2>
           <p className="section-subtitle">
-            A carefully crafted timeline designed to nurture your mind, body, and spirit
+            A carefully crafted timeline designed to nurture your mind, body,
+            and spirit
           </p>
-          
+
           <div className="schedule-timeline">
             <div className="schedule-item">
               <div className="schedule-time">🕙 10:00 – 10:30</div>
               <div className="schedule-content">
                 <strong>Welcome & Introductions</strong>
-                <p>Arrive, settle in, and meet the group in a warm, relaxed space. A gentle start to ease into the day.</p>
+                <p>
+                  Arrive, settle in, and meet the group in a warm, relaxed
+                  space. A gentle start to ease into the day.
+                </p>
               </div>
             </div>
             <div className="schedule-item">
               <div className="schedule-time">🧘‍♀️ 10:30 – 11:15</div>
               <div className="schedule-content">
                 <strong>Gentle Movement</strong>
-                <p>Slow, mindful movement to release tension and reconnect with the body.</p>
+                <p>
+                  Slow, mindful movement to release tension and reconnect with
+                  the body.
+                </p>
               </div>
             </div>
             <div className="schedule-item">
               <div className="schedule-time">🎶 11:15 – 12:15</div>
               <div className="schedule-content">
                 <strong>Sound Therapy</strong>
-                <p>Let soothing vibrations calm your nervous system and quiet the mind.</p>
+                <p>
+                  Let soothing vibrations calm your nervous system and quiet the
+                  mind.
+                </p>
               </div>
             </div>
             <div className="schedule-item">
@@ -542,21 +575,29 @@ export default function Home() {
               <div className="schedule-time">🧘 12:30 – 13:15</div>
               <div className="schedule-content">
                 <strong>Guided Meditation</strong>
-                <p>Drift into deep relaxation with supportive, calming guidance.</p>
+                <p>
+                  Drift into deep relaxation with supportive, calming guidance.
+                </p>
               </div>
             </div>
             <div className="schedule-item">
               <div className="schedule-time">☕ 13:15 – 14:00</div>
               <div className="schedule-content">
                 <strong>Reflection & Light Refreshments</strong>
-                <p>Space to share, reflect, and connect with others over tea and treats.</p>
+                <p>
+                  Space to share, reflect, and connect with others over tea and
+                  treats.
+                </p>
               </div>
             </div>
             <div className="schedule-item">
               <div className="schedule-time">👋 14:00</div>
               <div className="schedule-content">
                 <strong>Goodbyes</strong>
-                <p>Leave feeling lighter, nourished, and reconnected — this time is for you.</p>
+                <p>
+                  Leave feeling lighter, nourished, and reconnected — this time
+                  is for you.
+                </p>
               </div>
             </div>
           </div>
@@ -657,10 +698,22 @@ export default function Home() {
                 <div className="booking-features">
                   <h4>Additional Details</h4>
                   <ul>
-                    <li><i className="fas fa-check"></i>All materials and refreshments provided</li>
-                    <li><i className="fas fa-check"></i>Comfortable clothing recommended</li>
-                    <li><i className="fas fa-check"></i>No experience necessary - all levels welcome</li>
-                    <li><i className="fas fa-check"></i>Parking available at all venues</li>
+                    <li>
+                      <i className="fas fa-check"></i>All materials and
+                      refreshments provided
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>Comfortable clothing
+                      recommended
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>No experience necessary -
+                      all levels welcome
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>Parking available at all
+                      venues
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -684,7 +737,9 @@ export default function Home() {
                       <input type="tel" id="phone" name="phone" required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="date-preference">Preferred Venue & Date</label>
+                      <label htmlFor="date-preference">
+                        Preferred Venue & Date
+                      </label>
                       <select
                         id="date-preference"
                         name="date-preference"
@@ -693,29 +748,51 @@ export default function Home() {
                       >
                         <option value="">Select a venue and date</option>
                         <optgroup label="Dublin">
-                          <option value="ballybough-28-feb-2026">Ballybough - 28 Feb 2026</option>
-                          <option value="saggart-21-mar-2026">Saggart - 21 Mar 2026</option>
-                          <option value="tallaght-17-jan-2026">Tallaght - 17 Jan 2026</option>
+                          <option value="ballybough-28-feb-2026">
+                            Ballybough - 28 Feb 2026
+                          </option>
+                          <option value="saggart-21-mar-2026">
+                            Saggart - 21 Mar 2026
+                          </option>
+                          <option value="tallaght-17-jan-2026">
+                            Tallaght - 17 Jan 2026
+                          </option>
                         </optgroup>
                         <optgroup label="Kildare">
-                          <option value="athy-27-sep-2025">Athy - 27 Sep 2025</option>
-                          <option value="maynooth-19-oct-2025">Maynooth - 19 Oct 2025</option>
-                          <option value="kildare-town-15-nov-2025">Kildare Town - 15 Nov 2025</option>
+                          <option value="athy-27-sep-2025">
+                            Athy - 27 Sep 2025
+                          </option>
+                          <option value="maynooth-19-oct-2025">
+                            Maynooth - 19 Oct 2025
+                          </option>
+                          <option value="kildare-town-15-nov-2025">
+                            Kildare Town - 15 Nov 2025
+                          </option>
                         </optgroup>
                         <optgroup label="Kilkenny">
-                          <option value="kilkenny-city-11-jan-2026">Kilkenny City - 11 Jan 2026</option>
+                          <option value="kilkenny-city-11-jan-2026">
+                            Kilkenny City - 11 Jan 2026
+                          </option>
                         </optgroup>
                         <optgroup label="Laois">
-                          <option value="portlaoise-07-feb-2026">Portlaoise - 07 Feb 2026</option>
+                          <option value="portlaoise-07-feb-2026">
+                            Portlaoise - 07 Feb 2026
+                          </option>
                         </optgroup>
                         <optgroup label="Offaly">
-                          <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
+                          <option value="tullamore-22-nov-2025">
+                            Tullamore - 22 Nov 2025
+                          </option>
                         </optgroup>
                         <optgroup label="Wexford">
-                          <option value="new-ross-08-mar-2026">New Ross - 08 Mar 2026</option>
+                          <option value="new-ross-08-mar-2026">
+                            New Ross - 08 Mar 2026
+                          </option>
                         </optgroup>
                         <optgroup label="Wicklow">
-                          <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
+                          <option value="bray-06-dec-2025">
+                            Bray - 06 Dec 2025
+                          </option>
                         </optgroup>
                       </select>
                     </div>
@@ -860,8 +937,8 @@ export default function Home() {
             <div className="footer-section">
               <h3>Caring4Carers</h3>
               <p>
-                Wellness day retreats designed specifically for carers.
-                Because those who care for others deserve to be cared for too.
+                Wellness day retreats designed specifically for carers. Because
+                those who care for others deserve to be cared for too.
               </p>
             </div>
             <div className="footer-section">

@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     "Join Caring4Carers wellness day retreats. Mindfulness, movement, and relaxation designed specifically for carers. Book your rejuvenating day retreat today.",
   keywords:
     "carer wellness Leinster, day retreat for carers, wellness retreat Leinster, carer self-care, mindfulness for carers, carer support Ireland",
+  viewport:
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
 };
 
 export default function RootLayout({
@@ -17,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link
           rel="stylesheet"
@@ -26,8 +28,8 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="bg-gray-50">
-        <main className="min-h-screen">{children}</main>
+      <body className="bg-gray-50 w-full overflow-x-hidden">
+        <main className="min-h-screen w-full">{children}</main>
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
           strategy="lazyOnload"
