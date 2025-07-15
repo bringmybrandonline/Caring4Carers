@@ -14,7 +14,7 @@ export default function Home() {
   const [isValidatingGiftCard, setIsValidatingGiftCard] = useState(false);
   const [giftCardAmount, setGiftCardAmount] = useState<number | null>(null);
   const [remainingBalance, setRemainingBalance] = useState<number | null>(null);
-  const RETREAT_PRICE = 85.0;
+  const RETREAT_PRICE = 75.0;
 
   useEffect(() => {
     // Smooth scrolling for navigation links
@@ -241,6 +241,9 @@ export default function Home() {
               <a href="#experience">What to Expect</a>
             </li>
             <li>
+              <a href="#schedule">Schedule</a>
+            </li>
+            <li>
               <a href="/gift-cards" className="nav-link">
                 Gift Cards
               </a>
@@ -267,10 +270,10 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-content">
             <h1 className="hero-title">
-              Wellness Day Retreats for Carers in Leinster
+              Caring 4 Carers Wellness Day Retreat
             </h1>
             <p className="hero-subtitle">
-              Rediscover yourself through mindfulness, movement, and relaxation.
+              Rediscover yourself through mindfulness, movement, sound therapy, and relaxation.
               You dedicate your life to caring for others – now it&apos;s time
               to care for yourself.
             </p>
@@ -287,12 +290,16 @@ export default function Home() {
                 <i className="fas fa-spa"></i>
                 <span>Relaxation</span>
               </div>
+              <div className="feature">
+                <i className="fas fa-music"></i>
+                <span>Sound Therapy</span>
+              </div>
             </div>
             <a href="#booking" className="cta-button primary">
               Book Your Day Retreat
             </a>
             <p className="hero-note">
-              Includes nourishing lunch • Secure booking via Stripe
+              Secure booking via Stripe
             </p>
           </div>
           <div className="hero-image">
@@ -324,7 +331,7 @@ export default function Home() {
 
               <p>
                 After years of witnessing the selfless dedication of carers –
-                whether caring for aging parents, children with special needs,
+                whether caring for aging parents, adults or children with additional needs,
                 or family members with chronic illnesses – I noticed a
                 heartbreaking pattern. These incredible individuals were pouring
                 all their energy into others, leaving nothing for themselves.
@@ -345,7 +352,7 @@ export default function Home() {
               </p>
 
               <p>
-                Our wellness day retreats in the beautiful Leinster area
+                Our wellness day retreats
                 aren&apos;t just about relaxation – they&apos;re about
                 recognition, renewal, and connection. Every element is designed
                 specifically for carers who rarely get the chance to put
@@ -399,16 +406,16 @@ export default function Home() {
               <div className="card-icon">
                 <i className="fas fa-leaf"></i>
               </div>
-              <h3>Mindfulness Sessions</h3>
+              <h3>Mindfulness</h3>
               <p>
-                Guided meditation and breathing exercises to help you reconnect
+                Guided mindfulness and breathing exercises to help you reconnect
                 with the present moment and find inner peace amidst life&apos;s
                 demands.
               </p>
               <ul>
-                <li>Stress reduction techniques</li>
+                <li>Breathing exercises</li>
                 <li>Emotional regulation practices</li>
-                <li>Tools you can use at home</li>
+                <li>Body awareness practices</li>
               </ul>
             </div>
 
@@ -418,13 +425,12 @@ export default function Home() {
               </div>
               <h3>Gentle Movement</h3>
               <p>
-                Therapeutic movement sessions designed to release physical
-                tension and boost your energy, suitable for all fitness levels.
+                Traditional Ancient therapeutic practices is designed to benefit overall health, release physical tension and boost energy, Suitable for all fitness levels.
               </p>
               <ul>
-                <li>Yoga and stretching</li>
-                <li>Nature walks</li>
-                <li>Chair-based exercises</li>
+                <li>Gentle blowing sequence</li>
+                <li>Breath focues movement</li>
+                <li>Restorative poses</li>
               </ul>
             </div>
 
@@ -446,49 +452,31 @@ export default function Home() {
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-users"></i>
-              </div>
-              <h3>Connection & Community</h3>
-              <p>
-                Connect with other carers in a supportive, understanding
-                environment where you can share experiences and feel less alone.
-              </p>
-              <ul>
-                <li>Small group discussions</li>
-                <li>Peer support circles</li>
-                <li>Shared lunch experience</li>
-              </ul>
-            </div>
-
-            <div className="experience-card">
-              <div className="card-icon">
                 <i className="fas fa-utensils"></i>
               </div>
-              <h3>Nourishing Lunch</h3>
+              <h3>Meditation & Visualisation</h3>
               <p>
-                Enjoy a carefully prepared, nutritious meal in peaceful
-                surroundings – no planning, preparing, or cleaning required.
+                Experience inner stillness and clarity through gentle guided practises that calm the mind and soothe the soul.
               </p>
               <ul>
-                <li>Fresh, local ingredients</li>
-                <li>Dietary requirements catered</li>
-                <li>Mindful eating practices</li>
+                <li>Breath-focused meditation</li>
+                <li>Guided visualisation for emotional release</li>
+                <li>Practises to carry calm into your daily life</li>
               </ul>
             </div>
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-gift"></i>
+                <i className="fas fa-music"></i>
               </div>
-              <h3>Take-Home Resources</h3>
+              <h3>Sound Therapy</h3>
               <p>
-                Leave with practical tools and techniques you can integrate into
-                your daily routine to maintain your wellbeing.
+                A deeply relaxing experience using healing sounds and vibrations to calm the mind and restore balance to the body.
               </p>
               <ul>
-                <li>Self-care toolkit</li>
-                <li>Guided meditation recordings</li>
-                <li>Ongoing support resources</li>
+                <li>Reduces stress anxiety</li>
+                <li>Promotes deep rest and better sleep</li>
+                <li>Support emotional release and nervous system regulation</li>
               </ul>
             </div>
           </div>
@@ -508,9 +496,67 @@ export default function Home() {
                 <i className="fas fa-users-line"></i>
                 <span>Connected & Supported</span>
               </div>
-              <div className="benefit">
-                <i className="fas fa-toolbox"></i>
-                <span>Equipped with Tools</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule Section */}
+      <section id="schedule" className="schedule">
+        <div className="container">
+          <h2 className="section-title">What the Day Looks Like</h2>
+          <p className="section-subtitle">
+            A carefully crafted timeline designed to nurture your mind, body, and spirit
+          </p>
+          
+          <div className="schedule-timeline">
+            <div className="schedule-item">
+              <div className="schedule-time">🕙 10:00 – 10:30</div>
+              <div className="schedule-content">
+                <strong>Welcome & Introductions</strong>
+                <p>Arrive, settle in, and meet the group in a warm, relaxed space. A gentle start to ease into the day.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🧘‍♀️ 10:30 – 11:15</div>
+              <div className="schedule-content">
+                <strong>Gentle Movement</strong>
+                <p>Slow, mindful movement to release tension and reconnect with the body.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🎶 11:15 – 12:15</div>
+              <div className="schedule-content">
+                <strong>Sound Therapy</strong>
+                <p>Let soothing vibrations calm your nervous system and quiet the mind.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">💧 12:15 – 12:30</div>
+              <div className="schedule-content">
+                <strong>Hydration & Mindfulness</strong>
+                <p>Sip, breathe, pause — a moment of presence and grounding.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">🧘 12:30 – 13:15</div>
+              <div className="schedule-content">
+                <strong>Guided Meditation</strong>
+                <p>Drift into deep relaxation with supportive, calming guidance.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">☕ 13:15 – 14:00</div>
+              <div className="schedule-content">
+                <strong>Reflection & Light Refreshments</strong>
+                <p>Space to share, reflect, and connect with others over tea and treats.</p>
+              </div>
+            </div>
+            <div className="schedule-item">
+              <div className="schedule-time">👋 14:00</div>
+              <div className="schedule-content">
+                <strong>Goodbyes</strong>
+                <p>Leave feeling lighter, nourished, and reconnected — this time is for you.</p>
               </div>
             </div>
           </div>
@@ -521,7 +567,7 @@ export default function Home() {
       <section id="booking" className="booking">
         <div className="container">
           <div className="booking-content">
-            <h2>Book Your Wellness Day Retreat</h2>
+            <h2>Book your day retreat</h2>
             <p className="booking-subtitle">
               Take the first step towards putting yourself first. You deserve
               this time to restore and rejuvenate.
@@ -535,54 +581,86 @@ export default function Home() {
                     <i className="fas fa-clock"></i>
                     <div>
                       <strong>Duration:</strong>
-                      <span>Full Day (9:30 AM - 4:30 PM)</span>
+                      <span>10:00 AM - 2:00 PM (unless told otherwise)</span>
                     </div>
                   </div>
                   <div className="detail-item">
                     <i className="fas fa-map-marker-alt"></i>
                     <div>
-                      <strong>Location:</strong>
-                      <span>Beautiful venues across Leinster</span>
+                      <strong>Venues & Dates:</strong>
+                      <div className="venues-list">
+                        <div className="venue-group">
+                          <strong>Dublin:</strong>
+                          <ul>
+                            <li>Ballybough - 28 Feb 2026</li>
+                            <li>Saggart - 21 Mar 2026</li>
+                            <li>Tallaght - 17 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kildare:</strong>
+                          <ul>
+                            <li>Athy - 27 Sep 2025</li>
+                            <li>Maynooth - 19 Oct 2025</li>
+                            <li>Kildare Town - 15 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kilkenny:</strong>
+                          <ul>
+                            <li>Kilkenny City - 11 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Laois:</strong>
+                          <ul>
+                            <li>Portlaoise - 07 Feb 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Offaly:</strong>
+                          <ul>
+                            <li>Tullamore - 22 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wexford:</strong>
+                          <ul>
+                            <li>New Ross - 08 Mar 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wicklow:</strong>
+                          <ul>
+                            <li>Bray - 06 Dec 2025</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="detail-item">
                     <i className="fas fa-users"></i>
                     <div>
                       <strong>Group Size:</strong>
-                      <span>Small groups (max 12 people)</span>
+                      <span>Small groups (max 15 people)</span>
                     </div>
                   </div>
                   <div className="detail-item">
                     <i className="fas fa-euro-sign"></i>
                     <div>
                       <strong>Investment:</strong>
-                      <span>€85 (includes everything)</span>
+                      <span>€75.00</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="booking-features">
-                  <h4>What&apos;s Included:</h4>
+                  <h4>Additional Details</h4>
                   <ul>
-                    <li>
-                      <i className="fas fa-check"></i> All mindfulness and
-                      movement sessions
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Nutritious lunch and
-                      refreshments
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Take-home self-care
-                      toolkit
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> Ongoing support resources
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i> A day dedicated entirely
-                      to you
-                    </li>
+                    <li><i className="fas fa-check"></i>All materials and refreshments provided</li>
+                    <li><i className="fas fa-check"></i>Comfortable clothing recommended</li>
+                    <li><i className="fas fa-check"></i>No experience necessary - all levels welcome</li>
+                    <li><i className="fas fa-check"></i>Parking available at all venues</li>
                   </ul>
                 </div>
               </div>
@@ -606,30 +684,40 @@ export default function Home() {
                       <input type="tel" id="phone" name="phone" required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="date-preference">Preferred Date</label>
-                      <input
-                        type="date"
+                      <label htmlFor="date-preference">Preferred Venue & Date</label>
+                      <select
                         id="date-preference"
                         name="date-preference"
                         required
-                        min={new Date().toISOString().split("T")[0]}
-                        className="date-picker"
-                      />
-                      <small className="date-helper">
-                        Select your preferred retreat date. We run retreats on
-                        Saturdays.
-                      </small>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="requirements">
-                        Special Requirements (optional)
-                      </label>
-                      <textarea
-                        id="requirements"
-                        name="requirements"
-                        rows={3}
-                        placeholder="Dietary requirements, mobility considerations, etc."
-                      ></textarea>
+                        className="venue-select"
+                      >
+                        <option value="">Select a venue and date</option>
+                        <optgroup label="Dublin">
+                          <option value="ballybough-28-feb-2026">Ballybough - 28 Feb 2026</option>
+                          <option value="saggart-21-mar-2026">Saggart - 21 Mar 2026</option>
+                          <option value="tallaght-17-jan-2026">Tallaght - 17 Jan 2026</option>
+                        </optgroup>
+                        <optgroup label="Kildare">
+                          <option value="athy-27-sep-2025">Athy - 27 Sep 2025</option>
+                          <option value="maynooth-19-oct-2025">Maynooth - 19 Oct 2025</option>
+                          <option value="kildare-town-15-nov-2025">Kildare Town - 15 Nov 2025</option>
+                        </optgroup>
+                        <optgroup label="Kilkenny">
+                          <option value="kilkenny-city-11-jan-2026">Kilkenny City - 11 Jan 2026</option>
+                        </optgroup>
+                        <optgroup label="Laois">
+                          <option value="portlaoise-07-feb-2026">Portlaoise - 07 Feb 2026</option>
+                        </optgroup>
+                        <optgroup label="Offaly">
+                          <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
+                        </optgroup>
+                        <optgroup label="Wexford">
+                          <option value="new-ross-08-mar-2026">New Ross - 08 Mar 2026</option>
+                        </optgroup>
+                        <optgroup label="Wicklow">
+                          <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
+                        </optgroup>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label>Payment Method</label>
@@ -772,9 +860,8 @@ export default function Home() {
             <div className="footer-section">
               <h3>Caring4Carers</h3>
               <p>
-                Wellness day retreats designed specifically for carers across
-                the beautiful Leinster area. Because those who care for others
-                deserve to be cared for too.
+                Wellness day retreats designed specifically for carers.
+                Because those who care for others deserve to be cared for too.
               </p>
             </div>
             <div className="footer-section">
@@ -788,6 +875,9 @@ export default function Home() {
                 </li>
                 <li>
                   <a href="#experience">What to Expect</a>
+                </li>
+                <li>
+                  <a href="#schedule">Schedule</a>
                 </li>
                 <li>
                   <a href="#booking">Book Now</a>
