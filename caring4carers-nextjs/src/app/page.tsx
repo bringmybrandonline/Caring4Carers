@@ -228,14 +228,17 @@ export default function Home() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
-            <Image
-              src="/images/logo.jpeg"
-              alt="Caring4Carers Logo"
-              width={150}
-              height={40}
-              className="h-10 w-auto object-contain"
-              priority
-            />
+            <div className="logo-container">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Caring4Carers Logo"
+                width={50}
+                height={50}
+                className="logo-img"
+                priority
+              />
+              <span className="logo-text">Caring 4 Carers</span>
+            </div>
           </div>
           <ul className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
             <li>
@@ -385,6 +388,7 @@ export default function Home() {
                   controls
                   poster="/images/story-caring-hands.jfif"
                   preload="metadata"
+                  playsInline
                 >
                   <source src="/videos/story.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
@@ -397,11 +401,10 @@ export default function Home() {
                 <Image
                   src="/images/story-caring-hands.jfif"
                   alt="Caring hands representing support and compassion for carers"
-                  width={400}
-                  height={300}
+                  width={640}
+                  height={360}
                   className="story-img"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                  priority
                 />
               </div>
             </div>
