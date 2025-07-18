@@ -1174,6 +1174,253 @@ body {
   }
 }
 
+/* Enhanced Mobile Responsiveness - iPhone 12 Pro and similar devices (390px) */
+@media (max-width: 430px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Story section improvements */
+  .story-intro {
+    font-size: 1rem;
+  }
+
+  .story-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .story-highlight {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* Experience cards */
+  .experience-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .experience-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .experience-card ul li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Benefits section */
+  .experience-benefits {
+    padding: 1.5rem;
+  }
+
+  .experience-benefits h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .benefit {
+    font-size: 0.9rem;
+    gap: 0.5rem;
+  }
+
+  /* Booking section */
+  .booking-details {
+    padding: 1.5rem;
+  }
+
+  .booking-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .detail-item {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .booking-features {
+    margin-top: 1.5rem;
+  }
+
+  .booking-features li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-form {
+    padding: 1.25rem;
+  }
+
+  .booking-form h3 {
+    font-size: 1.2rem;
+  }
+
+  .booking-form p {
+    font-size: 0.9rem;
+  }
+
+  /* Form elements */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Security badges */
+  .security-badges {
+    margin-top: 1rem;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+  }
+
+  /* Navigation */
+  .nav-logo h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Hero features */
+  .hero-features {
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    font-size: 0.9rem;
+  }
+
+  .feature i {
+    font-size: 1rem;
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle,
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .experience-card {
+    padding: 1.25rem;
+  }
+
+  .experience-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .booking-form {
+    padding: 1rem;
+  }
+
+  .booking-details {
+    padding: 1.25rem;
+  }
+
+  .nav-logo h2 {
+    font-size: 1.3rem;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Improve text readability on all mobile devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Ensure proper spacing */
+  .hero {
+    padding: 100px 0 60px;
+  }
+
+  .story,
+  .experience,
+  .schedule,
+  .booking {
+    padding: 60px 0;
+  }
+
+  /* Better text contrast and spacing */
+  p {
+    margin-bottom: 1rem;
+  }
+
+  /* Improve button spacing */
+  .cta-button {
+    margin: 1rem 0;
+    display: block;
+    text-align: center;
+  }
+
+  /* Better list formatting */
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* Smooth scrolling and animations */
 @keyframes fadeInUp {
   from {
