@@ -302,21 +302,25 @@ export default function Home() {
               it&apos;s time to care for yourself.
             </p>
             <div className="hero-features">
-              <div className="feature">
-                <i className="fas fa-leaf"></i>
-                <span>Mindfulness</span>
+              <div className="feature-row">
+                <div className="feature">
+                  <i className="fas fa-leaf"></i>
+                  <span>Mindfulness</span>
+                </div>
+                <div className="feature">
+                  <i className="fas fa-heart"></i>
+                  <span>Movement</span>
+                </div>
               </div>
-              <div className="feature">
-                <i className="fas fa-heart"></i>
-                <span>Movement</span>
-              </div>
-              <div className="feature">
-                <i className="fas fa-spa"></i>
-                <span>Relaxation</span>
-              </div>
-              <div className="feature">
-                <i className="fas fa-music"></i>
-                <span>Sound Therapy</span>
+              <div className="feature-row">
+                <div className="feature">
+                  <i className="fas fa-spa"></i>
+                  <span>Relaxation</span>
+                </div>
+                <div className="feature">
+                  <i className="fas fa-music"></i>
+                  <span>Sound Therapy</span>
+                </div>
               </div>
             </div>
             <a href="#booking" className="cta-button primary">
@@ -618,109 +622,7 @@ export default function Home() {
             </p>
 
             <div className="booking-grid">
-              <div className="booking-info">
-                <div className="booking-details">
-                  <h3>Retreat Details</h3>
-                  <div className="detail-item">
-                    <i className="fas fa-clock"></i>
-                    <div>
-                      <strong>Duration:</strong>
-                      <span>10:00 AM - 2:00 PM (unless told otherwise)</span>
-                    </div>
-                  </div>
-                  <div className="detail-item">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <div>
-                      <strong>Venues & Dates:</strong>
-                      <div className="venues-list">
-                        <div className="venue-group">
-                          <strong>Dublin:</strong>
-                          <ul>
-                            <li>Ballybough - 28 Feb 2026</li>
-                            <li>Saggart - 21 Mar 2026</li>
-                            <li>Tallaght - 17 Jan 2026</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Kildare:</strong>
-                          <ul>
-                            <li>Athy - 27 Sep 2025</li>
-                            <li>Maynooth - 19 Oct 2025</li>
-                            <li>Kildare Town - 15 Nov 2025</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Kilkenny:</strong>
-                          <ul>
-                            <li>Kilkenny City - 11 Jan 2026</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Laois:</strong>
-                          <ul>
-                            <li>Portlaoise - 07 Feb 2026</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Offaly:</strong>
-                          <ul>
-                            <li>Tullamore - 22 Nov 2025</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Wexford:</strong>
-                          <ul>
-                            <li>New Ross - 08 Mar 2026</li>
-                          </ul>
-                        </div>
-                        <div className="venue-group">
-                          <strong>Wicklow:</strong>
-                          <ul>
-                            <li>Bray - 06 Dec 2025</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="detail-item">
-                    <i className="fas fa-users"></i>
-                    <div>
-                      <strong>Group Size:</strong>
-                      <span>Small groups (max 15 people)</span>
-                    </div>
-                  </div>
-                  <div className="detail-item">
-                    <i className="fas fa-euro-sign"></i>
-                    <div>
-                      <strong>Investment:</strong>
-                      <span>€75.00</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="booking-features">
-                  <h4>Additional Details</h4>
-                  <ul>
-                    <li>
-                      <i className="fas fa-check"></i>All materials and
-                      refreshments provided
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>Comfortable clothing
-                      recommended
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>No experience necessary -
-                      all levels welcome
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>Parking available at all
-                      venues
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
+              {/* Form comes first on mobile */}
               <div className="booking-form-container">
                 <div className="booking-form">
                   <h3>Reserve Your Spot</h3>
@@ -910,6 +812,110 @@ export default function Home() {
                       <span>Privacy Protected</span>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Details come second on mobile */}
+              <div className="booking-info">
+                <div className="booking-details">
+                  <h3>Retreat Details</h3>
+                  <div className="detail-item">
+                    <i className="fas fa-clock"></i>
+                    <div>
+                      <strong>Duration:</strong>
+                      <span>10:00 AM - 2:00 PM (unless told otherwise)</span>
+                    </div>
+                  </div>
+                  <div className="detail-item">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <div>
+                      <strong>Venues & Dates:</strong>
+                      <div className="venues-list">
+                        <div className="venue-group">
+                          <strong>Dublin:</strong>
+                          <ul>
+                            <li>Ballybough - 28 Feb 2026</li>
+                            <li>Saggart - 21 Mar 2026</li>
+                            <li>Tallaght - 17 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kildare:</strong>
+                          <ul>
+                            <li>Athy - 27 Sep 2025</li>
+                            <li>Maynooth - 19 Oct 2025</li>
+                            <li>Kildare Town - 15 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Kilkenny:</strong>
+                          <ul>
+                            <li>Kilkenny City - 11 Jan 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Laois:</strong>
+                          <ul>
+                            <li>Portlaoise - 07 Feb 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Offaly:</strong>
+                          <ul>
+                            <li>Tullamore - 22 Nov 2025</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wexford:</strong>
+                          <ul>
+                            <li>New Ross - 08 Mar 2026</li>
+                          </ul>
+                        </div>
+                        <div className="venue-group">
+                          <strong>Wicklow:</strong>
+                          <ul>
+                            <li>Bray - 06 Dec 2025</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="detail-item">
+                    <i className="fas fa-users"></i>
+                    <div>
+                      <strong>Group Size:</strong>
+                      <span>Small groups (max 15 people)</span>
+                    </div>
+                  </div>
+                  <div className="detail-item">
+                    <i className="fas fa-euro-sign"></i>
+                    <div>
+                      <strong>Investment:</strong>
+                      <span>€75.00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="booking-features">
+                  <h4>Additional Details</h4>
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>All materials and
+                      refreshments provided
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>Comfortable clothing
+                      recommended
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>No experience necessary -
+                      all levels welcome
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>Parking available at all
+                      venues
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

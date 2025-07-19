@@ -203,16 +203,53 @@ main {
 
 .hero-features {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.feature-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Mobile-specific: Stack features in 2x2 grid */
+@media (max-width: 767px) {
+  .feature-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .feature-row:first-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+
+  .hero-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #718096;
+  }
 }
 
 .feature {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #ff441f;
+  color: #1e90ff;
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .feature i {
@@ -233,6 +270,8 @@ main {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .cta-button:hover {
@@ -249,6 +288,7 @@ main {
   margin-top: 1rem;
   color: #718096;
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .hero-image {
@@ -313,6 +353,7 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  text-align: left;
 }
 
 .story h2 {
@@ -320,13 +361,15 @@ main {
   color: #1a202c;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .story-intro {
   font-size: 1.2rem;
-  color: #2b6cb0;
+  color: #1e90ff;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .story p {
@@ -334,15 +377,55 @@ main {
   font-size: 1.1rem;
   line-height: 1.7;
   color: #4a5568;
+  text-align: left;
 }
 
 .story-highlight {
   background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%);
   padding: 1.5rem;
   border-radius: 0.75rem;
-  border-left: 4px solid #2b6cb0;
+  border-left: 4px solid #1e90ff;
   font-weight: 500;
   color: #1a202c;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+/* Mobile Story Section */
+@media (max-width: 767px) {
+  .story {
+    padding: 60px 0;
+  }
+
+  .story-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .story h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .story-intro {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .story p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .story-highlight {
+    padding: 1rem;
+    text-align: center;
+    margin: 1.5rem 0;
+  }
 }
 
 .story-placeholder {
@@ -802,15 +885,17 @@ main {
 
 /* Booking Section */
 .booking {
-  background: linear-gradient(135deg, #fff 0%, rgba(255, 218, 31, 0.1) 100%);
   padding: 80px 0;
+  background: white;
 }
 
 .booking-content h2 {
-  color: #1e90ff;
+  text-align: center;
   font-size: 2.5rem;
+  color: #1a202c;
+  margin-bottom: 1rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  line-height: 1.3;
 }
 
 .booking-subtitle {
@@ -818,6 +903,7 @@ main {
   font-size: 1.2rem;
   color: #4a5568;
   margin-bottom: 3rem;
+  line-height: 1.5;
 }
 
 .booking-grid {
@@ -827,11 +913,21 @@ main {
   margin-bottom: 3rem;
 }
 
+/* Form comes first on mobile */
+.booking-form-container {
+  order: 2;
+}
+
+.booking-info {
+  order: 1;
+}
+
 .booking-details h3 {
   font-size: 1.5rem;
   color: #1a202c;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .detail-item {
@@ -839,12 +935,14 @@ main {
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 .detail-item i {
-  color: #ff441f;
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
+  color: #1e90ff;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+  min-width: 20px;
 }
 
 .detail-item strong {
@@ -861,6 +959,7 @@ main {
   color: #1a202c;
   margin-bottom: 1rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .booking-features ul {
@@ -873,6 +972,7 @@ main {
   gap: 0.75rem;
   margin-bottom: 0.75rem;
   color: #4a5568;
+  font-size: 1rem;
 }
 
 .booking-features i {
@@ -885,6 +985,7 @@ main {
   padding: 2.5rem;
   border-radius: 1rem;
   border: 1px solid #e2e8f0;
+  text-align: left;
 }
 
 .booking-form h3 {
@@ -892,11 +993,14 @@ main {
   color: #1a202c;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .booking-form > p {
   color: #4a5568;
   margin-bottom: 2rem;
+  font-size: 1rem;
+  text-align: left;
 }
 
 .form-group {
@@ -922,6 +1026,95 @@ main {
   background: white;
 }
 
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1e90ff;
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+}
+
+/* Mobile Booking Section */
+@media (max-width: 767px) {
+  .booking {
+    padding: 60px 0;
+  }
+
+  .booking-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .booking-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Reset order for mobile */
+  .booking-form-container {
+    order: 1;
+  }
+
+  .booking-info {
+    order: 2;
+  }
+
+  .booking-details {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .detail-item {
+    font-size: 0.9rem;
+  }
+
+  .booking-features {
+    margin-top: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+  }
+
+  .booking-features h4 {
+    text-align: center;
+  }
+
+  .booking-features li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-form {
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .booking-form h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .booking-form > p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}
+
 /* Date Picker Specific Styling */
 .date-picker {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -945,14 +1138,6 @@ main {
   color: #64748b;
   font-size: 0.875rem;
   font-style: italic;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #1e90ff;
-  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
 }
 
 /* Story Video Styling */
@@ -1840,4 +2025,375 @@ a:focus {
 
 .security-badge i {
   color: #ff441f;
+}
+
+/* Global Mobile Improvements */
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Ensure proper spacing */
+  .hero {
+    padding: 80px 0 40px;
+  }
+
+  .story,
+  .experience,
+  .schedule,
+  .booking {
+    padding: 60px 0;
+  }
+
+  /* Better text contrast and spacing */
+  p {
+    margin-bottom: 1rem;
+  }
+
+  /* Improve button spacing */
+  .cta-button {
+    margin: 1rem 0;
+    display: block;
+    text-align: center;
+  }
+
+  /* Better list formatting */
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Hero section mobile improvements */
+  .hero-title {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-note {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  /* Section titles mobile centering */
+  .section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Experience cards mobile improvements */
+  .experience-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .experience-card h3 {
+    text-align: center;
+  }
+
+  .experience-card p {
+    text-align: center;
+  }
+
+  .experience-card ul {
+    text-align: left;
+    display: inline-block;
+  }
+
+  /* Benefits section mobile centering */
+  .experience-benefits {
+    text-align: center;
+  }
+
+  .experience-benefits h3 {
+    text-align: center;
+  }
+
+  .benefits-grid {
+    justify-items: center;
+  }
+
+  /* Schedule section mobile improvements */
+  .schedule .section-title {
+    text-align: center;
+  }
+
+  .schedule .section-subtitle {
+    text-align: center;
+  }
+
+  /* Booking section mobile improvements */
+  .booking-content h2 {
+    text-align: center;
+  }
+
+  .booking-subtitle {
+    text-align: center;
+  }
+
+  /* Venues list mobile improvements */
+  .venues-list {
+    text-align: left;
+  }
+
+  .venue-group {
+    text-align: left;
+  }
+
+  .venue-group ul {
+    text-align: left;
+  }
+
+  /* Form improvements for mobile */
+  .booking-form {
+    text-align: center;
+  }
+
+  .booking-form h3 {
+    text-align: center;
+  }
+
+  .booking-form > p {
+    text-align: center;
+  }
+
+  .form-group {
+    text-align: left;
+  }
+
+  .form-group label {
+    text-align: left;
+  }
+
+  /* Security badges mobile centering */
+  .security-badges {
+    justify-content: center;
+  }
+
+  /* Footer mobile improvements */
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    text-align: center;
+  }
+
+  .footer-section ul {
+    text-align: center;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+}
+
+/* Very small devices optimization */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 3vw;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle,
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .experience-card {
+    padding: 1.25rem;
+  }
+
+  .experience-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .booking-form {
+    padding: 1rem;
+  }
+
+  .booking-details {
+    padding: 1.25rem;
+  }
+
+  .nav-logo h2 {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* Hero features for very small screens */
+  .hero-features {
+    margin-bottom: 1.5rem;
+  }
+
+  .feature {
+    font-size: 0.85rem;
+  }
+
+  .feature i {
+    font-size: 0.9rem;
+  }
+}
+
+/* iPhone 12 Pro and similar devices optimization */
+@media (max-width: 430px) {
+  .container {
+    padding: 0 4vw;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Story section improvements */
+  .story-intro {
+    font-size: 1rem;
+  }
+
+  .story-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .story-highlight {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* Experience cards */
+  .experience-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .experience-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .experience-card ul li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Benefits section */
+  .experience-benefits {
+    padding: 1.5rem;
+  }
+
+  .experience-benefits h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .benefit {
+    font-size: 0.9rem;
+    gap: 0.5rem;
+  }
+
+  /* Navigation */
+  .nav-logo h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Hero features */
+  .hero-features {
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    font-size: 0.9rem;
+  }
+
+  .feature i {
+    font-size: 1rem;
+  }
+
+  /* Booking form improvements */
+  .booking-form {
+    padding: 1.25rem;
+  }
+
+  .booking-details {
+    padding: 1.5rem;
+  }
+
+  .booking-features {
+    padding: 1.5rem;
+  }
+
+  /* Schedule improvements */
+  .schedule .schedule-content {
+    padding: 1rem;
+  }
+
+  .schedule .schedule-time {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
 }
