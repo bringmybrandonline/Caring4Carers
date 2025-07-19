@@ -346,15 +346,51 @@ export default function Home() {
       {/* Story Section */}
       <section id="story" className="story">
         <div className="container">
+          <div className="story-header">
+            <h2>How Caring4Carers Came About</h2>
+            <p className="story-subtitle">
+              A personal journey that led to creating something special for those who care for others
+            </p>
+          </div>
+          
+          <div className="story-video-section">
+            <div className="story-video-wrapper">
+              <video
+                className="story-video"
+                controls
+                poster="/images/story-caring-hands.jfif"
+                preload="metadata"
+                playsInline
+              >
+                <source src="/videos/story.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="video-overlay">
+                <i className="fas fa-play"></i>
+              </div>
+            </div>
+            <div className="story-video-fallback">
+              <Image
+                src="/images/story-caring-hands.jfif"
+                alt="Caring hands representing support and compassion for carers"
+                width={800}
+                height={450}
+                className="story-fallback-img"
+                priority
+              />
+            </div>
+          </div>
+
           <div className="story-content">
-            <div className="story-text">
-              <h2>How Caring4Carers Came About</h2>
+            <div className="story-intro-card">
               <p className="story-intro">
                 My journey to creating Caring4Carers began with a deeply
                 personal realization about the hidden struggles of those who
                 dedicate their lives to caring for others.
               </p>
+            </div>
 
+            <div className="story-text-content">
               <p>
                 After years of witnessing the selfless dedication of carers –
                 whether caring for aging parents, adults or children with
@@ -373,10 +409,12 @@ export default function Home() {
                 caring role.
               </p>
 
-              <p className="story-highlight">
-                That&apos;s when Caring4Carers was born – from the belief that
-                those who care for others deserve to be cared for too.
-              </p>
+              <div className="story-highlight-card">
+                <p className="story-highlight">
+                  That&apos;s when Caring4Carers was born – from the belief that
+                  those who care for others deserve to be cared for too.
+                </p>
+              </div>
 
               <p>
                 Our wellness day retreats aren&apos;t just about relaxation –
@@ -384,36 +422,6 @@ export default function Home() {
                 element is designed specifically for carers who rarely get the
                 chance to put themselves first.
               </p>
-            </div>
-            <div className="story-media">
-              <div className="story-video-container">
-                <video
-                  className="story-video"
-                  controls
-                  poster="/images/story-caring-hands.jfif"
-                  preload="metadata"
-                  playsInline
-                  width="100%"
-                  height="auto"
-                >
-                  <source src="/videos/story.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="video-overlay">
-                  <i className="fas fa-play video-play-icon"></i>
-                </div>
-              </div>
-              <div className="story-image-fallback">
-                <Image
-                  src="/images/story-caring-hands.jfif"
-                  alt="Caring hands representing support and compassion for carers"
-                  width={640}
-                  height={360}
-                  className="story-img"
-                  priority
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              </div>
             </div>
           </div>
         </div>
