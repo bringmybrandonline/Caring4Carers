@@ -17,6 +17,28 @@ export default function Home() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const RETREAT_PRICE = 75.0;
 
+  // Video play functionality
+  const handleVideoPlay = () => {
+    const video = document.querySelector(".story-video") as HTMLVideoElement;
+    const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
+    
+    if (video) {
+      video.play();
+      setIsVideoPlaying(true);
+      if (videoWrapper) {
+        videoWrapper.classList.add("playing");
+      }
+    }
+  };
+
+  const handleVideoPause = () => {
+    const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
+    setIsVideoPlaying(false);
+    if (videoWrapper) {
+      videoWrapper.classList.remove("playing");
+    }
+  };
+
   useEffect(() => {
     // Smooth scrolling for navigation links
     const handleScroll = (e: Event) => {
@@ -63,32 +85,10 @@ export default function Home() {
       }
     };
 
-    // Video play button functionality
-    const handleVideoPlay = () => {
-      const video = document.querySelector(".story-video") as HTMLVideoElement;
-      const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
-      
-      if (video) {
-        video.play();
-        setIsVideoPlaying(true);
-        if (videoWrapper) {
-          videoWrapper.classList.add("playing");
-        }
-      }
-    };
-
-    const handleVideoPause = () => {
-      const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
-      setIsVideoPlaying(false);
-      if (videoWrapper) {
-        videoWrapper.classList.remove("playing");
-      }
-    };
-
-    const videoOverlay = document.querySelector(".video-overlay");
-    if (videoOverlay) {
-      videoOverlay.addEventListener("click", handleVideoPlay);
-    }
+    const navLinks = document.querySelectorAll(".nav-menu a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleScroll);
+    });
 
     const video = document.querySelector(".story-video") as HTMLVideoElement;
     if (video) {
@@ -96,11 +96,6 @@ export default function Home() {
       video.addEventListener("pause", handleVideoPause);
       video.addEventListener("ended", handleVideoPause);
     }
-
-    const navLinks = document.querySelectorAll(".nav-menu a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", handleScroll);
-    });
 
     window.addEventListener("scroll", handleNavbarScroll);
 
@@ -112,9 +107,6 @@ export default function Home() {
         video.removeEventListener("error", handleVideoError);
         video.removeEventListener("pause", handleVideoPause);
         video.removeEventListener("ended", handleVideoPause);
-      }
-      if (videoOverlay) {
-        videoOverlay.removeEventListener("click", handleVideoPlay);
       }
       window.removeEventListener("scroll", handleNavbarScroll);
     };
