@@ -489,13 +489,13 @@ export default function Home() {
               </div>
               <h3>Gentle Movement</h3>
               <p>
-                Traditional Ancient therapeutic practices is designed to benefit
+                Traditional Ancient therapeutic practices are designed to benefit
                 overall health, release physical tension and boost energy,
                 Suitable for all fitness levels.
               </p>
               <ul>
-                <li>Gentle blowing sequence</li>
-                <li>Breath focues movement</li>
+                <li>Gentle flowing sequence</li>
+                <li>Breath focused movement</li>
                 <li>Restorative poses</li>
               </ul>
             </div>
@@ -526,9 +526,9 @@ export default function Home() {
                 to calm the mind and restore balance to the body.
               </p>
               <ul>
-                <li>Reduces stress anxiety</li>
-                <li>Promotes deep rest and better sleep</li>
-                <li>Support emotional release and nervous system regulation</li>
+                <li>Reduces stress and anxiety</li>
+                <li>Promotes deep sleep and better rest</li>
+                <li>Supports emotional release and nervous system regulation</li>
               </ul>
             </div>
           </div>
