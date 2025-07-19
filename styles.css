@@ -215,6 +215,21 @@ body {
   .feature-row:first-child {
     margin-bottom: 0.5rem;
   }
+
+  .hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+
+  .hero-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #718096;
+  }
 }
 
 .feature {
@@ -370,6 +385,7 @@ body {
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
+  text-align: center;
 }
 
 .story h2 {
@@ -377,6 +393,7 @@ body {
   color: #1a202c;
   margin-bottom: 1rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .story-intro {
@@ -384,6 +401,7 @@ body {
   color: #2b6cb0;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .story p {
@@ -391,6 +409,7 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #4a5568;
+  text-align: center;
 }
 
 .story-highlight {
@@ -401,6 +420,8 @@ body {
   font-weight: 500;
   color: #1a202c;
   font-size: 1rem;
+  text-align: center;
+  margin: 1.5rem 0;
 }
 
 .story-placeholder {
@@ -430,25 +451,30 @@ body {
   .story-content {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    text-align: left;
   }
 
   .story h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    text-align: left;
   }
 
   .story-intro {
     font-size: 1.2rem;
+    text-align: left;
   }
 
   .story p {
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
+    text-align: left;
   }
 
   .story-highlight {
     padding: 1.5rem;
+    text-align: left;
   }
 
   .story-placeholder {
@@ -967,8 +993,20 @@ body {
   margin-bottom: 2rem;
 }
 
+/* Form comes first on mobile */
+.booking-form-container {
+  order: 1;
+}
+
+.booking-info {
+  order: 2;
+}
+
 .booking-details {
   padding: 1.5rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .booking-details h3 {
@@ -976,6 +1014,7 @@ body {
   color: #1a202c;
   margin-bottom: 1rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .detail-item {
@@ -1001,12 +1040,17 @@ body {
 
 .booking-features {
   margin-top: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
 }
 
 .booking-features h4 {
   color: #1a202c;
   margin-bottom: 1rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .booking-features ul {
@@ -1039,12 +1083,14 @@ body {
   color: #1a202c;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .booking-form > p {
   color: #4a5568;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .form-group {
@@ -1126,13 +1172,25 @@ body {
     margin-bottom: 3rem;
   }
 
+  /* Reset order for desktop */
+  .booking-form-container {
+    order: 2;
+  }
+
+  .booking-info {
+    order: 1;
+  }
+
   .booking-details {
     padding: 0;
+    background: none;
+    margin-bottom: 0;
   }
 
   .booking-details h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    text-align: left;
   }
 
   .detail-item {
@@ -1141,6 +1199,13 @@ body {
 
   .booking-features {
     margin-top: 2rem;
+    background: none;
+    padding: 0;
+    border: none;
+  }
+
+  .booking-features h4 {
+    text-align: left;
   }
 
   .booking-features li {
@@ -1154,11 +1219,13 @@ body {
 
   .booking-form h3 {
     font-size: 1.5rem;
+    text-align: left;
   }
 
   .booking-form > p {
     font-size: 1rem;
     margin-bottom: 2rem;
+    text-align: left;
   }
 
   .form-group {
@@ -1422,6 +1489,150 @@ body {
     max-width: 100%;
     height: auto;
   }
+
+  /* Hero section mobile improvements */
+  .hero-title {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-note {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  /* Section titles mobile centering */
+  .section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Experience cards mobile improvements */
+  .experience-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .experience-card h3 {
+    text-align: center;
+  }
+
+  .experience-card p {
+    text-align: center;
+  }
+
+  .experience-card ul {
+    text-align: left;
+    display: inline-block;
+  }
+
+  /* Benefits section mobile centering */
+  .experience-benefits {
+    text-align: center;
+  }
+
+  .experience-benefits h3 {
+    text-align: center;
+  }
+
+  .benefits-grid {
+    justify-items: center;
+  }
+
+  /* Schedule section mobile improvements */
+  .schedule .section-title {
+    text-align: center;
+  }
+
+  .schedule .section-subtitle {
+    text-align: center;
+  }
+
+  /* Booking section mobile improvements */
+  .booking-content h2 {
+    text-align: center;
+  }
+
+  .booking-subtitle {
+    text-align: center;
+  }
+
+  /* Venues list mobile improvements */
+  .venues-list {
+    text-align: left;
+  }
+
+  .venue-group {
+    text-align: left;
+  }
+
+  .venue-group ul {
+    text-align: left;
+  }
+
+  /* Form improvements for mobile */
+  .booking-form {
+    text-align: center;
+  }
+
+  .booking-form h3 {
+    text-align: center;
+  }
+
+  .booking-form > p {
+    text-align: center;
+  }
+
+  .form-group {
+    text-align: left;
+  }
+
+  .form-group label {
+    text-align: left;
+  }
+
+  /* Security badges mobile centering */
+  .security-badges {
+    justify-content: center;
+  }
+
+  /* Footer mobile improvements */
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    text-align: center;
+  }
+
+  .footer-section ul {
+    text-align: center;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
 }
 
 /* Remove old conflicting responsive rules */
@@ -1474,6 +1685,19 @@ body {
   .cta-button {
     padding: 0.75rem 1.25rem;
     font-size: 0.95rem;
+  }
+
+  /* Hero features for very small screens */
+  .hero-features {
+    margin-bottom: 1.5rem;
+  }
+
+  .feature {
+    font-size: 0.85rem;
+  }
+
+  .feature i {
+    font-size: 0.9rem;
   }
 }
 
@@ -1573,6 +1797,29 @@ body {
 
   .feature i {
     font-size: 1rem;
+  }
+
+  /* Booking form improvements */
+  .booking-form {
+    padding: 1.25rem;
+  }
+
+  .booking-details {
+    padding: 1.5rem;
+  }
+
+  .booking-features {
+    padding: 1.5rem;
+  }
+
+  /* Schedule improvements */
+  .schedule .schedule-content {
+    padding: 1rem;
+  }
+
+  .schedule .schedule-time {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
   }
 }
 

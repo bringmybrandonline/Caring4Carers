@@ -314,6 +314,84 @@
           </p>
 
           <div class="booking-grid">
+            <!-- Form comes first on mobile -->
+            <div class="booking-form-container">
+              <div class="booking-form">
+                <h3>Reserve Your Spot</h3>
+                <p>Secure online booking with Stripe-protected payments</p>
+
+                <form class="contact-form">
+                  <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="date-preference">Preferred Venue & Date</label>
+                    <select
+                      id="date-preference"
+                      name="date-preference"
+                      required
+                    >
+                      <option value="">Select a venue and date</option>
+                      <optgroup label="Dublin">
+                        <option value="ballybough-28-feb-2026">Ballybough - 28 Feb 2026</option>
+                        <option value="saggart-21-mar-2026">Saggart - 21 Mar 2026</option>
+                        <option value="tallaght-17-jan-2026">Tallaght - 17 Jan 2026</option>
+                      </optgroup>
+                      <optgroup label="Kildare">
+                        <option value="athy-27-sep-2025">Athy - 27 Sep 2025</option>
+                        <option value="maynooth-19-oct-2025">Maynooth - 19 Oct 2025</option>
+                        <option value="kildare-town-15-nov-2025">Kildare Town - 15 Nov 2025</option>
+                      </optgroup>
+                      <optgroup label="Kilkenny">
+                        <option value="kilkenny-city-11-jan-2026">Kilkenny City - 11 Jan 2026</option>
+                      </optgroup>
+                      <optgroup label="Laois">
+                        <option value="portlaoise-07-feb-2026">Portlaoise - 07 Feb 2026</option>
+                      </optgroup>
+                      <optgroup label="Offaly">
+                        <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
+                      </optgroup>
+                      <optgroup label="Wexford">
+                        <option value="new-ross-07-mar-2026">New Ross - 07 Mar 2026</option>
+                      </optgroup>
+                      <optgroup label="Wicklow">
+                        <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <button type="submit" class="cta-button primary full-width">
+                    <i class="fas fa-credit-card"></i>
+                    Book Now - Secure Payment via Stripe
+                  </button>
+                </form>
+
+                <div class="security-badges">
+                  <div class="badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>SSL Secured</span>
+                  </div>
+                  <div class="badge">
+                    <i class="fab fa-stripe"></i>
+                    <span>Stripe Protected</span>
+                  </div>
+                  <div class="badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Privacy Protected</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Details come second on mobile -->
             <div class="booking-info">
               <div class="booking-details">
                 <h3>Retreat Details</h3>
@@ -402,82 +480,6 @@
                     <li><i class="fas fa-check"></i>No experience necessary - all levels welcome</li>
                     <li><i class="fas fa-check"></i>Parking available at all venues</li>
                 </ul>
-              </div>
-            </div>
-
-            <div class="booking-form-container">
-              <div class="booking-form">
-                <h3>Reserve Your Spot</h3>
-                <p>Secure online booking with Stripe-protected payments</p>
-
-                <form class="contact-form">
-                  <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="date-preference">Preferred Venue & Date</label>
-                    <select
-                      id="date-preference"
-                      name="date-preference"
-                      required
-                    >
-                      <option value="">Select a venue and date</option>
-                      <optgroup label="Dublin">
-                        <option value="ballybough-28-feb-2026">Ballybough - 28 Feb 2026</option>
-                        <option value="saggart-21-mar-2026">Saggart - 21 Mar 2026</option>
-                        <option value="tallaght-17-jan-2026">Tallaght - 17 Jan 2026</option>
-                      </optgroup>
-                      <optgroup label="Kildare">
-                        <option value="athy-27-sep-2025">Athy - 27 Sep 2025</option>
-                        <option value="maynooth-19-oct-2025">Maynooth - 19 Oct 2025</option>
-                        <option value="kildare-town-15-nov-2025">Kildare Town - 15 Nov 2025</option>
-                      </optgroup>
-                      <optgroup label="Kilkenny">
-                        <option value="kilkenny-city-11-jan-2026">Kilkenny City - 11 Jan 2026</option>
-                      </optgroup>
-                      <optgroup label="Laois">
-                        <option value="portlaoise-07-feb-2026">Portlaoise - 07 Feb 2026</option>
-                      </optgroup>
-                      <optgroup label="Offaly">
-                        <option value="tullamore-22-nov-2025">Tullamore - 22 Nov 2025</option>
-                      </optgroup>
-                      <optgroup label="Wexford">
-                        <option value="new-ross-07-mar-2026">New Ross - 07 Mar 2026</option>
-                      </optgroup>
-                      <optgroup label="Wicklow">
-                        <option value="bray-06-dec-2025">Bray - 06 Dec 2025</option>
-                      </optgroup>
-                    </select>
-                  </div>
-                  <button type="submit" class="cta-button primary full-width">
-                    <i class="fas fa-credit-card"></i>
-                    Book Now - Secure Payment via Stripe
-                  </button>
-                </form>
-
-                <div class="security-badges">
-                  <div class="badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>SSL Secured</span>
-                  </div>
-                  <div class="badge">
-                    <i class="fab fa-stripe"></i>
-                    <span>Stripe Protected</span>
-                  </div>
-                  <div class="badge">
-                    <i class="fas fa-lock"></i>
-                    <span>Privacy Protected</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

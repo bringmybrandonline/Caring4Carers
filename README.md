@@ -146,3 +146,6 @@ The website is fully functional and ready to use. For customizations or addition
 **Status: ✅ COMPLETE & READY TO DEPLOY**
 
 This is a production-ready website that meets all requirements and follows modern web development best practices.
+
+
+Developed by Austyn Koky (BringMyBrandOnline)
