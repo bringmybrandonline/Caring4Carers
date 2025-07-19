@@ -14,6 +14,7 @@ export default function Home() {
   const [isValidatingGiftCard, setIsValidatingGiftCard] = useState(false);
   const [giftCardAmount, setGiftCardAmount] = useState<number | null>(null);
   const [remainingBalance, setRemainingBalance] = useState<number | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const RETREAT_PRICE = 75.0;
 
   useEffect(() => {
@@ -62,15 +63,44 @@ export default function Home() {
       }
     };
 
-    const navLinks = document.querySelectorAll(".nav-menu a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", handleScroll);
-    });
+    // Video play button functionality
+    const handleVideoPlay = () => {
+      const video = document.querySelector(".story-video") as HTMLVideoElement;
+      const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
+      
+      if (video) {
+        video.play();
+        setIsVideoPlaying(true);
+        if (videoWrapper) {
+          videoWrapper.classList.add("playing");
+        }
+      }
+    };
+
+    const handleVideoPause = () => {
+      const videoWrapper = document.querySelector(".story-video-wrapper") as HTMLElement;
+      setIsVideoPlaying(false);
+      if (videoWrapper) {
+        videoWrapper.classList.remove("playing");
+      }
+    };
+
+    const videoOverlay = document.querySelector(".video-overlay");
+    if (videoOverlay) {
+      videoOverlay.addEventListener("click", handleVideoPlay);
+    }
 
     const video = document.querySelector(".story-video") as HTMLVideoElement;
     if (video) {
       video.addEventListener("error", handleVideoError);
+      video.addEventListener("pause", handleVideoPause);
+      video.addEventListener("ended", handleVideoPause);
     }
+
+    const navLinks = document.querySelectorAll(".nav-menu a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleScroll);
+    });
 
     window.addEventListener("scroll", handleNavbarScroll);
 
@@ -80,6 +110,11 @@ export default function Home() {
       });
       if (video) {
         video.removeEventListener("error", handleVideoError);
+        video.removeEventListener("pause", handleVideoPause);
+        video.removeEventListener("ended", handleVideoPause);
+      }
+      if (videoOverlay) {
+        videoOverlay.removeEventListener("click", handleVideoPlay);
       }
       window.removeEventListener("scroll", handleNavbarScroll);
     };
@@ -365,7 +400,7 @@ export default function Home() {
                 <source src="/videos/story.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="video-overlay">
+              <div className="video-overlay" onClick={handleVideoPlay}>
                 <i className="fas fa-play"></i>
               </div>
             </div>
@@ -475,23 +510,7 @@ export default function Home() {
 
             <div className="experience-card">
               <div className="card-icon">
-                <i className="fas fa-spa"></i>
-              </div>
-              <h3>Deep Relaxation</h3>
-              <p>
-                Experience profound rest through guided relaxation sessions,
-                helping you release the weight you carry and truly unwind.
-              </p>
-              <ul>
-                <li>Progressive muscle relaxation</li>
-                <li>Sound healing sessions</li>
-                <li>Quiet reflection time</li>
-              </ul>
-            </div>
-
-            <div className="experience-card">
-              <div className="card-icon">
-                <i className="fas fa-utensils"></i>
+                <i className="fas fa-eye"></i>
               </div>
               <h3>Meditation & Visualisation</h3>
               <p>
@@ -626,7 +645,7 @@ export default function Home() {
       <section id="booking" className="booking">
         <div className="container">
           <div className="booking-content">
-            <h2>Book your day retreat</h2>
+            <h2>Book Your Day Retreat</h2>
             <p className="booking-subtitle">
               Take the first step towards putting yourself first. You deserve
               this time to restore and rejuvenate.
@@ -905,44 +924,6 @@ export default function Home() {
                       <span>€75.00</span>
                     </div>
                   </div>
-                </div>
-
-                <div className="booking-features">
-                  <h4>Additional Details</h4>
-                  <ul>
-                    <li>
-                      <i className="fas fa-check"></i>All materials and
-                      refreshments provided
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>Comfortable clothing
-                      recommended
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>No experience necessary -
-                      all levels welcome
-                    </li>
-                    <li>
-                      <i className="fas fa-check"></i>Parking available at all
-                      venues
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="testimonial">
-              <div className="testimonial-content">
-                <i className="fas fa-quote-left"></i>
-                <p>
-                  &quot;After years of caring for my mother, I had forgotten
-                  what it felt like to truly relax. This day retreat gave me
-                  back to myself. I left feeling renewed and with practical
-                  tools I still use daily.&quot;
-                </p>
-                <div className="testimonial-author">
-                  <strong>Sarah M.</strong>
-                  <span>Family Carer, Dublin</span>
                 </div>
               </div>
             </div>
