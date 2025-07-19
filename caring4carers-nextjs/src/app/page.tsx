@@ -393,6 +393,8 @@ export default function Home() {
                   poster="/images/story-caring-hands.jfif"
                   preload="metadata"
                   playsInline
+                  width="100%"
+                  height="auto"
                 >
                   <source src="/videos/story.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
@@ -409,6 +411,7 @@ export default function Home() {
                   height={360}
                   className="story-img"
                   priority
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             </div>

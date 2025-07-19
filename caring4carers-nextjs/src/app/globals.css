@@ -426,6 +426,69 @@ main {
     text-align: center;
     margin: 1.5rem 0;
   }
+
+  /* Story media improvements for mobile */
+  .story-media {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  .story-video-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .story-video {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-image-fallback {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .story-image-fallback img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .video-play-icon {
+    color: white;
+    font-size: 1.5rem;
+  }
 }
 
 .story-placeholder {
@@ -1142,51 +1205,52 @@ main {
 
 /* Story Video Styling */
 .story-media {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-/* Story Video Styles */
 .story-video-container {
   position: relative;
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   background: #000;
-  aspect-ratio: 16/9;
 }
 
 .story-video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   border-radius: 1rem;
 }
 
 .video-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(30, 144, 255, 0.2);
-  transition: opacity 0.3s ease;
-  opacity: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .story-video-container:hover .video-overlay {
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .video-play-icon {
-  font-size: 3rem;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  color: white;
+  font-size: 2rem;
 }
 
 .story-video-container:hover .video-play-icon {
@@ -1198,12 +1262,69 @@ main {
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .story-image-fallback img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* Mobile-specific video improvements */
+@media (max-width: 767px) {
+  .story-media {
+    order: -1;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .story-video-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 250px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .story-video {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-image-fallback {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 250px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .story-image-fallback img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-overlay {
+    width: 70px;
+    height: 70px;
+  }
+
+  .video-play-icon {
+    font-size: 1.8rem;
+  }
 }
 
 /* Video Controls Styling */
@@ -2218,7 +2339,7 @@ a:focus {
   }
 }
 
-/* Very small devices optimization */
+/* Very small devices */
 @media (max-width: 375px) {
   .container {
     padding: 0 3vw;
@@ -2273,6 +2394,26 @@ a:focus {
 
   .feature i {
     font-size: 0.9rem;
+  }
+
+  /* Story video for very small screens */
+  .story-video-container,
+  .story-image-fallback {
+    min-height: 200px;
+  }
+
+  .story-video,
+  .story-image-fallback img {
+    min-height: 200px;
+  }
+
+  .video-overlay {
+    width: 60px;
+    height: 60px;
+  }
+
+  .video-play-icon {
+    font-size: 1.5rem;
   }
 }
 
