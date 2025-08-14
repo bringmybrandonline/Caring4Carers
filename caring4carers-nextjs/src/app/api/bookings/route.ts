@@ -8,7 +8,13 @@ const bookingSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 characters"),
   datePreference: z.string().min(1, "Please select a date preference"),
-  requirements: z.string().optional().default(""),
+  // Accept undefined or null and coerce to empty string
+  requirements: z
+    .preprocess(
+      (val) => (val === null || val === undefined ? "" : val),
+      z.string()
+    )
+    .optional(),
   paymentMethod: z.enum(["card", "giftcard"]),
   giftCardCode: z.string().optional(),
 });
